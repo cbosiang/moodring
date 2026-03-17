@@ -1,105 +1,80 @@
 # GRISI — Global Retail Investor Sentiment Index
 
-> **When retail investors are greedy, markets tend to underperform. When they're fearful, markets outperform.**
+> A daily-updated contrarian indicator that tells you: **what's the historical win rate if you enter the market today?**
 
-[![Dashboard](https://img.shields.io/badge/Live_Dashboard-EN-blue)](https://wenyuchiou.github.io/openclaw-workspace/proposals/market-agent-thermometer/docs/index.html)
-[![Dashboard](https://img.shields.io/badge/Live_Dashboard-中文-orange)](https://wenyuchiou.github.io/openclaw-workspace/proposals/market-agent-thermometer/docs/tw.html)
+[![US Dashboard](https://img.shields.io/badge/Dashboard-US_(EN)-blue)](https://wenyuchiou.github.io/grisi/index.html)
+[![TW Dashboard](https://img.shields.io/badge/Dashboard-台灣_(中文)-orange)](https://wenyuchiou.github.io/grisi/tw.html)
 
-## What is GRISI?
+## What It Does
 
-A quantitative contrarian sentiment index for US (SPY) and Taiwan (TAIEX) markets, backtested over 16 years (2010–2026).
+Open the dashboard → see three things:
 
-**Core finding:** When the GRISI score is in the "Extreme Fear" quintile, SPY averages **+2.43%** over the next 20 days (73% win rate). In "Extreme Greed," only **+0.82%**.
+1. **Current score** — US and TW retail sentiment (0–100, high = greedy)
+2. **Expected return** — based on 16 years of data, when sentiment was at this level, what happened next
+3. **Signal** — HOLD / BUY / SELL with reasoning
+
+**Example:** When the score is ~30 (fearful), SPY has historically returned **+2.2% over the next 20 days with 73% win rate**. At ~70 (greedy), only +0.8%.
 
 ## How It Works
 
 ```
-Market Data (yfinance + FinMind)
-    → Rolling Z-score normalization (252-day, no lookahead)
-    → 5 components per market (equal weight)
-    → Behavioral adjustment (loss aversion, FOMO, herding)
-    → 0–100 score (high = greedy, low = fearful)
-    → Forward return statistics at current level
+Public market data (Yahoo Finance + FinMind)
+  → 5 indicators per market, Z-score normalized (252-day rolling)
+  → Behavioral adjustment at extremes (loss aversion, FOMO, herding)
+  → Score 0–100
+  → Historical forward return lookup at current score level
+  → Daily auto-update via GitHub Actions
 ```
 
-### US Score Components
-| Component | Signal | Source |
-|-----------|--------|--------|
-| VIX Complacency | Low VIX = complacent retail | yfinance |
-| SPY Position | Near ATH = FOMO | yfinance |
-| Momentum | Strong 20d return = chasing | yfinance |
-| Correlation Regime | VIX-SPY decorrelation = stress | yfinance |
-| Risk Appetite | Gold/SPY ratio = risk-off | yfinance |
+### What goes into the score
 
-### TW Score Components
-| Component | Signal | Source |
-|-----------|--------|--------|
-| Rate Pressure | US 10Y yield = hot money flow | yfinance |
-| Global Risk Appetite | Gold/SPY ratio | yfinance |
-| Vol Complacency | Low realized vol = complacent | yfinance |
-| TAIEX Position | Near ATH = greedy | yfinance |
-| Volume Excitement | Volume surge = retail piling in | yfinance |
+**US (SPY):** VIX complacency · SPY vs 52W high · 20d momentum · VIX-SPY correlation · Gold/SPY ratio
 
-### Behavioral Layer (Phase 2)
-Psychometric parameters from behavioral finance literature amplify the base score at extremes:
-- **Loss Aversion** (Kahneman & Tversky, 1979): US 2.0x, TW 2.8x
-- **Herding** (Banerjee, 1992): US 0.60, TW 0.80
-- **FOMO**: activates when momentum > 0 near ATH
-- **Conditional gates**: adjustments only fire at extreme scores (>65 or <35), zero noise in normal markets
+**TW (TAIEX):** US 10Y rate pressure · Gold/SPY ratio · realized vol · TAIEX vs 52W high · volume surge
 
-## Backtest Results
+### Why it works
 
-| Market | Horizon | IC | p-value | Significant |
-|--------|---------|-----|---------|-------------|
-| US (SPY) | 20d | **-0.175** | < 0.0001 | Yes |
-| US (SPY) | 60d | **-0.180** | < 0.0001 | Yes |
-| TW (TAIEX) | 20d | **-0.128** | < 0.0001 | Yes |
-| TW (TAIEX) | 60d | **-0.098** | < 0.0001 | Yes |
+Retail investors systematically overreact at extremes. When they're greedy (score >70), markets tend to underperform. When they're fearful (score <30), markets outperform. This is a well-documented behavioral finance phenomenon (Kahneman & Tversky, 1979).
 
-Negative IC = contrarian signal works (high greed → low future returns).
+### Backtest (2010–2026)
+
+| Market | Horizon | IC | p-value | Interpretation |
+|--------|---------|-----|---------|----------------|
+| SPY | 20d | **-0.175** | < 0.0001 | High greed → low future returns |
+| SPY | 60d | **-0.180** | < 0.0001 | Stronger over longer horizons |
+| TAIEX | 20d | **-0.128** | < 0.0001 | Same pattern in Taiwan |
+
+## Data Sources
+
+| Data | Source | Update |
+|------|--------|--------|
+| SPY, VIX, Gold, 10Y yield | Yahoo Finance (yfinance) | Daily |
+| TAIEX, TSMC | Yahoo Finance (yfinance) | Daily |
+| Margin balance (融資餘額) | FinMind API (TWSE OpenData) | Daily |
+| Institutional flows (三大法人) | FinMind API (TWSE OpenData) | Daily |
+| Behavioral parameters | Prospect Theory literature | Static |
+
+## Auto-Update
+
+GitHub Actions runs Mon–Fri at 22:00 UTC (6PM ET / 6AM TWN):
+1. Pulls latest market data
+2. Updates dashboard JSON
+3. Commits and pushes → GitHub Pages auto-deploys
+
+Agent narrative (cultural sentiment analysis) is updated manually by Claude.
 
 ## Project Structure
 
 ```
-├── docs/
-│   ├── index.html          # EN dashboard (GitHub Pages)
-│   ├── tw.html             # TW dashboard (GitHub Pages)
-│   └── research/           # Proposal & theoretical docs
-├── data/
-│   ├── base_features.csv   # 22 market features (2010-2026)
-│   ├── target_returns.csv  # Forward returns (5/10/20/60d)
-│   ├── phase2_scores.csv   # Base + behavioral scores
-│   ├── forward_outlook.json # Conditional returns at current level
-│   └── ...                 # Backtest results, snapshots
-└── src/
-    ├── backtest.py         # Scoring engine + evaluation
-    ├── phase2_agents.py    # Behavioral model + LLM agents
-    ├── historical_data.py  # Data download pipeline
-    ├── data_snapshot.py    # Real-time data pull
-    └── social_data.py      # TW margin/institutional data
+grisi/
+├── docs/           ← Dashboard (GitHub Pages serves from here)
+│   ├── index.html  ← US market (English)
+│   └── tw.html     ← TW market (繁體中文)
+├── data/           ← All data + results
+├── src/            ← Python scoring engine + pipelines
+└── .github/        ← Daily auto-update workflow
 ```
 
-## Quick Start
+## Not Financial Advice
 
-```bash
-# 1. Download historical data
-python src/historical_data.py
-
-# 2. Run backtest
-python src/backtest.py
-
-# 3. Run Phase 2 (behavioral + agents)
-python src/phase2_agents.py
-```
-
-## Tech Stack
-
-- **Data**: yfinance (US), FinMind (TW), pandas, numpy
-- **Statistics**: scipy (Spearman IC, p-values)
-- **Behavioral Model**: Prospect Theory parameters, conditional activation gates
-- **Dashboard**: Chart.js, vanilla HTML/CSS/JS, GitHub Pages
-- **Agent Narrative**: Claude (claude-opus-4-6) for cultural sentiment interpretation
-
-## License
-
-Research project — not financial advice.
+GRISI is a research tool based on historical patterns. Past performance does not guarantee future results. Use at your own risk.
