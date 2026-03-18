@@ -65,17 +65,23 @@ body {
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .thermo-score-row {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 .thermo-score { font-size: 3em; font-weight: 800; line-height: 1; }
 .thermo-zone-label { font-size: 0.82em; font-weight: 700; letter-spacing: 0.3px; }
-.thermo-bar-wrap { position: relative; margin: 10px 0 6px; }
+.thermo-expected {
+  font-size: 0.70em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+.thermo-bar-wrap { position: relative; margin: 8px 0 6px; }
 .thermo-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; }
 .thermo-zone { height: 100%; position: relative; }
 .thermo-labels { display: flex; margin-top: 4px; }
@@ -319,6 +325,7 @@ body {
         <span class="thermo-score" id="us-score">--</span>
         <span class="thermo-zone-label" id="us-label">Loading...</span>
       </div>
+      <div class="thermo-expected" id="us-expected"></div>
       <div class="thermo-bar-wrap">
         <div class="thermo-marker-row">
           <div class="thermo-marker" id="us-marker" style="left:50%">
@@ -336,6 +343,7 @@ body {
         <span class="thermo-score" id="tw-score">--</span>
         <span class="thermo-zone-label" id="tw-label">Loading...</span>
       </div>
+      <div class="thermo-expected" id="tw-expected"></div>
       <div class="thermo-bar-wrap">
         <div class="thermo-marker-row">
           <div class="thermo-marker" id="tw-marker" style="left:50%">
@@ -414,7 +422,6 @@ body {
     <canvas id="overlayChart" height="220"></canvas>
   </div>
   <div style="font-size:0.68em; color:#8b949e; margin-top:8px; text-align:center;">
-    Green zones (score &lt;30) preceded rallies. Red zones (score &gt;70) preceded declines.<br>
     Score by GRISI engine: 252-day rolling Z-score + behavioral adjustment.
   </div>
 </div>
@@ -474,8 +481,17 @@ function getZoneIndex(score) {
   return ZONES.length - 1;
 }
 
+// ── Find zone data from zone_returns.json by score ───────────────────────────
+function findZoneReturn(zoneReturns, score) {
+  if (!zoneReturns || !zoneReturns.zones) return null;
+  for (const z of zoneReturns.zones) {
+    if (score >= z.lo && score < z.hi) return z;
+  }
+  return zoneReturns.zones[zoneReturns.zones.length - 1];
+}
+
 // ── Thermometer renderer ──────────────────────────────────────────────────────
-function renderThermometer(prefix, score, pctile) {
+function renderThermometer(prefix, score, pctile, zoneReturns, market) {
   const zi    = getZoneIndex(score);
   const clr   = ZONE_TEXT_COLORS[zi];
   const label = ZONES[zi].label;
@@ -486,6 +502,22 @@ function renderThermometer(prefix, score, pctile) {
   const labelEl = document.getElementById(prefix + '-label');
   labelEl.textContent = label;
   labelEl.style.color = clr;
+
+  // Expected return line
+  const expectedEl = document.getElementById(prefix + '-expected');
+  if (expectedEl && zoneReturns) {
+    const zd = findZoneReturn(zoneReturns, score);
+    if (zd) {
+      const avg = market === 'us' ? zd.us_20d_avg : zd.tw_20d_avg;
+      const win = market === 'us' ? zd.us_20d_win : zd.tw_20d_win;
+      if (avg !== undefined && win !== undefined) {
+        const sign = avg >= 0 ? '+' : '';
+        const retClr = avg >= 0 ? '#3fb950' : '#f85149';
+        expectedEl.style.color = retClr;
+        expectedEl.textContent = 'Expected: ' + sign + avg.toFixed(2) + '% / 20d (' + win.toFixed(0) + '% win)';
+      }
+    }
+  }
 
   const barEl    = document.getElementById(prefix + '-bar');
   const labelsEl = document.getElementById(prefix + '-zone-labels');
@@ -561,7 +593,7 @@ function renderSignalAndAnalysis(agentData) {
   badge.className   = 'signal-badge';
   badge.classList.add(sigWord === 'BUY' ? 'badge-buy' : sigWord === 'SELL' ? 'badge-sell' : 'badge-hold');
 
-  // Cross-market view (prefer EN field, fall back to base field)
+  // Cross-market view
   const crossView = summary.cross_market_view_en || summary.cross_market_view || '';
   document.getElementById('cross-market-text').textContent = crossView;
 
@@ -695,26 +727,9 @@ function buildOverlayChart(overlayData, rangeDays) {
     }
   };
 
-  const zonePlugin = {
-    id: 'bgZones',
-    beforeDraw(chart) {
-      const { ctx: c, chartArea: { top, bottom }, scales } = chart;
-      if (!scales['y-score']) return;
-      c.save(); c.globalAlpha = 0.10;
-      for (let i = 0; i < scores.length - 1; i++) {
-        const s = scores[i]; if (s == null) continue;
-        const x0 = scales.x.getPixelForValue(i);
-        const x1 = scales.x.getPixelForValue(i + 1);
-        if      (s < 30) { c.fillStyle = '#2ea043'; c.fillRect(x0, top, x1 - x0, bottom - top); }
-        else if (s > 70) { c.fillStyle = '#da3633'; c.fillRect(x0, top, x1 - x0, bottom - top); }
-      }
-      c.restore();
-    }
-  };
-
   _overlayChart = new Chart(ctx, {
     type: 'line',
-    plugins: [zonePlugin, nowDotPlugin],
+    plugins: [nowDotPlugin],
     data: {
       labels: dates,
       datasets: [
@@ -823,21 +838,22 @@ function renderMarketData(snap) {
 // ── Main load ─────────────────────────────────────────────────────────────────
 async function loadDashboard() {
   try {
-    const [fwdData, agentData, quintileData, dashData, overlayData] = await Promise.all([
+    const [fwdData, agentData, quintileData, dashData, overlayData, zoneReturns] = await Promise.all([
       fetch('data/forward_outlook.json').then(r => r.json()),
       fetch('data/phase2_agent_results.json').then(r => r.json()),
       fetch('data/quintile_data.json').then(r => r.json()),
       fetch('data/dashboard_data.json').then(r => r.json()),
       fetch('data/overlay_data.json').then(r => r.json()),
+      fetch('data/zone_returns.json').then(r => r.json()),
     ]);
 
     const date = agentData.date || dashData.snapshot?.date || '--';
     document.getElementById('header-date').textContent = 'As of ' + date;
     document.getElementById('footer-date').textContent = date;
 
-    // 1. Thermometers
-    renderThermometer('us', fwdData.us_current_score, quintileData.us_percentile);
-    renderThermometer('tw', fwdData.tw_current_score, quintileData.tw_percentile);
+    // 1. Thermometers (with zone expected return)
+    renderThermometer('us', fwdData.us_current_score, quintileData.us_percentile, zoneReturns, 'us');
+    renderThermometer('tw', fwdData.tw_current_score, quintileData.tw_percentile, zoneReturns, 'tw');
 
     // 2. Forward returns
     renderReturnCols('spy-returns', fwdData.us_forward,
@@ -855,7 +871,7 @@ async function loadDashboard() {
     // 3. Signal & analysis (merged)
     renderSignalAndAnalysis(agentData);
 
-    // 4. Overlay chart — default 1Y
+    // 4. Overlay chart — default 1Y (no bgZones)
     buildOverlayChart(overlayData, 252);
 
     // 5. Historical proof

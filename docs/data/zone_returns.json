@@ -1,0 +1,102 @@
+{
+  "zones": [
+    {
+      "name": "Extreme Fear",
+      "name_tw": "極度恐懼",
+      "lo": 0,
+      "hi": 15,
+      "us_20d_avg": 3.8,
+      "us_20d_win": 71.2,
+      "us_60d_avg": 10.3,
+      "us_n": 125,
+      "tw_20d_avg": 3.29,
+      "tw_20d_win": 70.4,
+      "tw_60d_avg": 6.84,
+      "tw_n": 142
+    },
+    {
+      "name": "Fear",
+      "name_tw": "恐懼",
+      "lo": 15,
+      "hi": 30,
+      "us_20d_avg": 1.9,
+      "us_20d_win": 65.2,
+      "us_60d_avg": 4.42,
+      "us_n": 210,
+      "tw_20d_avg": 1.58,
+      "tw_20d_win": 71.0,
+      "tw_60d_avg": 5.59,
+      "tw_n": 155
+    },
+    {
+      "name": "Cautious",
+      "name_tw": "謹慎",
+      "lo": 30,
+      "hi": 40,
+      "us_20d_avg": 2.1,
+      "us_20d_win": 70.9,
+      "us_60d_avg": 4.21,
+      "us_n": 289,
+      "tw_20d_avg": 0.03,
+      "tw_20d_win": 62.5,
+      "tw_60d_avg": 3.34,
+      "tw_n": 293
+    },
+    {
+      "name": "Neutral",
+      "name_tw": "中性",
+      "lo": 40,
+      "hi": 60,
+      "us_20d_avg": 0.97,
+      "us_20d_win": 69.5,
+      "us_60d_avg": 3.21,
+      "us_n": 2379,
+      "tw_20d_avg": 0.78,
+      "tw_20d_win": 59.4,
+      "tw_60d_avg": 2.16,
+      "tw_n": 2249
+    },
+    {
+      "name": "Optimism",
+      "name_tw": "樂觀",
+      "lo": 60,
+      "hi": 70,
+      "us_20d_avg": 0.6,
+      "us_20d_win": 66.0,
+      "us_60d_avg": 2.42,
+      "us_n": 805,
+      "tw_20d_avg": 0.73,
+      "tw_20d_win": 62.4,
+      "tw_60d_avg": 2.21,
+      "tw_n": 655
+    },
+    {
+      "name": "Greed",
+      "name_tw": "貪婪",
+      "lo": 70,
+      "hi": 85,
+      "us_20d_avg": 1.04,
+      "us_20d_win": 72.2,
+      "us_60d_avg": 3.02,
+      "us_n": 144,
+      "tw_20d_avg": -0.32,
+      "tw_20d_win": 45.9,
+      "tw_60d_avg": 1.32,
+      "tw_n": 196
+    },
+    {
+      "name": "Euphoria",
+      "name_tw": "極度貪婪",
+      "lo": 85,
+      "hi": 100,
+      "us_20d_avg": null,
+      "us_20d_win": null,
+      "us_60d_avg": null,
+      "us_n": 2,
+      "tw_20d_avg": -2.22,
+      "tw_20d_win": 30.0,
+      "tw_60d_avg": 1.78,
+      "tw_n": 20
+    }
+  ]
+}
