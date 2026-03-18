@@ -2,7 +2,7 @@ name: GRISI Daily Update
 
 on:
   schedule:
-    - cron: '0 22 * * 1-5'
+    - cron: '0 14 * * 1-5'  # 22:00 Beijing/Taipei time (UTC+8)
   workflow_dispatch:
 
 permissions:
