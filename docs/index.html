@@ -54,43 +54,100 @@ body {
   font-weight: 700;
 }
 
-/* Score cards */
-.score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.score-card {
+/* ── THERMOMETER ── */
+.thermo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.thermo-card {
   background: #161b22;
   border: 1px solid #30363d;
   border-radius: 10px;
   padding: 14px;
 }
-.score-card .market-label {
-  font-size: 0.70em;
+.thermo-card .market-label {
+  font-size: 0.68em;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
-.score-card .score-number {
-  font-size: 2.6em;
+.thermo-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.thermo-score {
+  font-size: 3em;
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 6px;
 }
-.score-card .sentiment-label {
-  font-size: 0.78em;
-  font-weight: 600;
-  margin-bottom: 8px;
+.thermo-zone-label {
+  font-size: 0.82em;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
-.gauge-bar {
-  height: 6px;
-  background: #21262d;
-  border-radius: 3px;
+
+/* The multi-zone bar */
+.thermo-bar-wrap {
+  position: relative;
+  margin: 10px 0 6px;
+}
+.thermo-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
   overflow: hidden;
-  margin-bottom: 6px;
 }
-.gauge-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
-.score-card .percentile {
-  font-size: 0.70em;
+.thermo-zone {
+  height: 100%;
+  position: relative;
+}
+/* Zone label row below bar */
+.thermo-labels {
+  display: flex;
+  margin-top: 4px;
+}
+.thermo-zone-name {
+  font-size: 0.48em;
+  color: #6e7681;
+  text-align: center;
+  line-height: 1.2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* Marker triangle above bar */
+.thermo-marker-row {
+  position: relative;
+  height: 12px;
+  margin-bottom: 0;
+}
+.thermo-marker {
+  position: absolute;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.thermo-marker-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #fff;
+}
+.thermo-now-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  top: 50%;
+}
+.thermo-percentile {
+  font-size: 0.68em;
   color: #8b949e;
+  margin-top: 6px;
 }
 
 /* Forward returns */
@@ -205,10 +262,7 @@ body {
   gap: 8px;
   margin-bottom: 8px;
 }
-.agent-flag {
-  font-size: 1.2em;
-  line-height: 1;
-}
+.agent-flag { font-size: 1.2em; line-height: 1; }
 .agent-name {
   font-size: 0.72em;
   font-weight: 700;
@@ -279,13 +333,7 @@ body {
   margin-top: 2px;
 }
 
-/* Loading / Error */
-.loading-state {
-  text-align: center;
-  padding: 40px 16px;
-  color: #8b949e;
-  font-size: 0.85em;
-}
+/* Error */
 .error-state {
   text-align: center;
   padding: 20px 16px;
@@ -309,7 +357,7 @@ body {
 }
 
 /* Color utilities */
-.clr-green { color: #3fb950; }
+.clr-green  { color: #3fb950; }
 .clr-yellow { color: #e3b341; }
 .clr-red    { color: #f85149; }
 .clr-blue   { color: #58a6ff; }
@@ -325,12 +373,13 @@ body {
   color: #8b949e;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.2s;
 }
 .range-btn:hover { border-color: #58a6ff; color: #58a6ff; }
 .range-btn.active { background: #0d419d; border-color: #58a6ff; color: #fff; }
 
 @media (max-width: 480px) {
-  .score-grid       { grid-template-columns: 1fr 1fr; }
+  .thermo-grid      { grid-template-columns: 1fr; }
   .returns-grid     { grid-template-columns: 1fr; }
   .agent-grid       { grid-template-columns: 1fr; }
   .mkt-grid         { grid-template-columns: repeat(4, 1fr); }
@@ -349,23 +398,43 @@ body {
   <div class="date" id="header-date">Loading...</div>
 </div>
 
-<!-- 1. Current Sentiment -->
+<!-- 1. Current Sentiment Thermometer -->
 <div class="section">
   <div class="section-title">Current Sentiment</div>
-  <div class="score-grid">
-    <div class="score-card" id="us-score-card">
+  <div class="thermo-grid">
+    <div class="thermo-card" id="us-thermo-card">
       <div class="market-label">US Market</div>
-      <div class="score-number" id="us-score">--</div>
-      <div class="sentiment-label" id="us-label">Loading...</div>
-      <div class="gauge-bar"><div class="gauge-fill" id="us-gauge" style="width:0%"></div></div>
-      <div class="percentile" id="us-pct">Percentile: --%</div>
+      <div class="thermo-score-row">
+        <span class="thermo-score" id="us-score">--</span>
+        <span class="thermo-zone-label" id="us-label">Loading...</span>
+      </div>
+      <div class="thermo-bar-wrap">
+        <div class="thermo-marker-row" id="us-marker-row">
+          <div class="thermo-marker" id="us-marker" style="left:50%">
+            <div class="thermo-marker-arrow"></div>
+          </div>
+        </div>
+        <div class="thermo-bar" id="us-bar"></div>
+        <div class="thermo-labels" id="us-zone-labels"></div>
+      </div>
+      <div class="thermo-percentile" id="us-pct">Percentile: --%</div>
     </div>
-    <div class="score-card" id="tw-score-card">
+    <div class="thermo-card" id="tw-thermo-card">
       <div class="market-label">TW Market</div>
-      <div class="score-number" id="tw-score">--</div>
-      <div class="sentiment-label" id="tw-label">Loading...</div>
-      <div class="gauge-bar"><div class="gauge-fill" id="tw-gauge" style="width:0%"></div></div>
-      <div class="percentile" id="tw-pct">Percentile: --%</div>
+      <div class="thermo-score-row">
+        <span class="thermo-score" id="tw-score">--</span>
+        <span class="thermo-zone-label" id="tw-label">Loading...</span>
+      </div>
+      <div class="thermo-bar-wrap">
+        <div class="thermo-marker-row" id="tw-marker-row">
+          <div class="thermo-marker" id="tw-marker" style="left:50%">
+            <div class="thermo-marker-arrow"></div>
+          </div>
+        </div>
+        <div class="thermo-bar" id="tw-bar"></div>
+        <div class="thermo-labels" id="tw-zone-labels"></div>
+      </div>
+      <div class="thermo-percentile" id="tw-pct">Percentile: --%</div>
     </div>
   </div>
 </div>
@@ -403,10 +472,10 @@ body {
 <div class="section">
   <div class="section-title">Sentiment vs Market Price</div>
   <div style="display:flex;gap:6px;margin-bottom:10px;">
-    <button class="range-btn active" onclick="setRange(this,30)">30D</button>
-    <button class="range-btn" onclick="setRange(this,120)">6M</button>
-    <button class="range-btn" onclick="setRange(this,252)">1Y</button>
-    <button class="range-btn" onclick="setRange(this,0)">All</button>
+    <button class="range-btn" data-days="63">3M</button>
+    <button class="range-btn active" data-days="252">1Y</button>
+    <button class="range-btn" data-days="756">3Y</button>
+    <button class="range-btn" data-days="0">All</button>
   </div>
   <div class="chart-wrap">
     <canvas id="overlayChart" height="220"></canvas>
@@ -432,7 +501,7 @@ body {
   <div class="agent-grid">
     <div class="agent-card" id="us-agent-card">
       <div class="agent-header">
-        <span class="agent-flag">🇺🇸</span>
+        <span class="agent-flag">&#127482;&#127480;</span>
         <span class="agent-name">US Agent</span>
         <span class="conviction-badge" id="us-conviction">--</span>
       </div>
@@ -441,7 +510,7 @@ body {
     </div>
     <div class="agent-card" id="tw-agent-card">
       <div class="agent-header">
-        <span class="agent-flag">🇹🇼</span>
+        <span class="agent-flag">&#127481;&#127484;</span>
         <span class="agent-name">TW Agent</span>
         <span class="conviction-badge" id="tw-conviction">--</span>
       </div>
@@ -472,53 +541,108 @@ body {
 </div>
 
 <script>
-// ── Helpers ──────────────────────────────────────────────────────────────────
-function sentimentLabel(score) {
-  if (score < 15) return 'Extreme Fear';
-  if (score < 30) return 'Fear';
-  if (score < 40) return 'Cautious';
-  if (score < 60) return 'Neutral';
-  if (score < 70) return 'Cautious Optimism';
-  if (score < 85) return 'Greed';
-  return 'Euphoria';
+// ── Zone definitions ──────────────────────────────────────────────────────────
+const ZONES = [
+  { min:  0, max: 15, label: 'Extreme Fear',      color: '#0a4020' },
+  { min: 15, max: 30, label: 'Fear',               color: '#1a6b35' },
+  { min: 30, max: 40, label: 'Cautious',           color: '#2d8f4e' },
+  { min: 40, max: 60, label: 'Neutral',            color: '#8a7a10' },
+  { min: 60, max: 70, label: 'Optimism',           color: '#b84a1a' },
+  { min: 70, max: 85, label: 'Greed',              color: '#c53030' },
+  { min: 85, max:100, label: 'Euphoria',           color: '#7a1a1a' },
+];
+
+// Bright display colors for the score number and zone label text
+const ZONE_TEXT_COLORS = [
+  '#3fb950', // Extreme Fear
+  '#56d364', // Fear
+  '#7ee787', // Cautious
+  '#e3b341', // Neutral
+  '#f0883e', // Optimism
+  '#f85149', // Greed
+  '#ff7b72', // Euphoria
+];
+
+function getZoneIndex(score) {
+  for (let i = 0; i < ZONES.length; i++) {
+    if (score >= ZONES[i].min && score < ZONES[i].max) return i;
+  }
+  return ZONES.length - 1;
 }
 
-function scoreColor(score) {
-  if (score < 35)  return '#3fb950';
-  if (score <= 65) return '#e3b341';
-  return '#f85149';
+function sentimentLabel(score) { return ZONES[getZoneIndex(score)].label; }
+function scoreTextColor(score) { return ZONE_TEXT_COLORS[getZoneIndex(score)]; }
+
+// ── Thermometer renderer ──────────────────────────────────────────────────────
+function renderThermometer(prefix, score, pctile) {
+  const zi   = getZoneIndex(score);
+  const clr  = ZONE_TEXT_COLORS[zi];
+  const label = ZONES[zi].label;
+
+  // Score number + zone label text
+  const scoreEl = document.getElementById(prefix + '-score');
+  scoreEl.textContent = score.toFixed(1);
+  scoreEl.style.color = clr;
+  const labelEl = document.getElementById(prefix + '-label');
+  labelEl.textContent = label;
+  labelEl.style.color = clr;
+
+  // Build zone bar segments
+  const barEl = document.getElementById(prefix + '-bar');
+  const labelsEl = document.getElementById(prefix + '-zone-labels');
+  barEl.innerHTML = '';
+  labelsEl.innerHTML = '';
+
+  ZONES.forEach((z, i) => {
+    const width = z.max - z.min;
+    const pct   = width + '%';
+
+    // Bar segment
+    const seg = document.createElement('div');
+    seg.className = 'thermo-zone';
+    seg.style.width = pct;
+    seg.style.background = z.color;
+    // Highlight current zone with a brighter border effect
+    if (i === zi) {
+      seg.style.outline = '2px solid ' + clr;
+      seg.style.outlineOffset = '-1px';
+      seg.style.zIndex = '2';
+    }
+    barEl.appendChild(seg);
+
+    // Label below bar
+    const nameEl = document.createElement('div');
+    nameEl.className = 'thermo-zone-name';
+    nameEl.style.width = pct;
+    nameEl.textContent = z.label;
+    if (i === zi) {
+      nameEl.style.color = clr;
+      nameEl.style.fontWeight = '700';
+    }
+    labelsEl.appendChild(nameEl);
+  });
+
+  // Position the marker arrow
+  const markerEl = document.getElementById(prefix + '-marker');
+  const leftPct  = Math.max(2, Math.min(98, score)) + '%';
+  markerEl.style.left = leftPct;
+
+  // Percentile
+  document.getElementById(prefix + '-pct').textContent = 'Percentile: ' + pctile + '%';
 }
 
-function gaugeColor(score) {
-  if (score < 35)  return '#238636';
-  if (score <= 65) return '#9e6a03';
-  return '#da3633';
-}
-
-function fmtPct(v, decimals=2) {
+// ── Format helpers ────────────────────────────────────────────────────────────
+function fmtPct(v, decimals) {
+  decimals = (decimals === undefined) ? 2 : decimals;
   const sign = v >= 0 ? '+' : '';
   return sign + v.toFixed(decimals) + '%';
 }
-
-function fmtNum(v, decimals=1) {
+function fmtNum(v, decimals) {
+  decimals = (decimals === undefined) ? 1 : decimals;
   return v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 }
 
-// ── Render helpers ────────────────────────────────────────────────────────────
-function renderScoreCard(idPrefix, score, pctile) {
-  const label = sentimentLabel(score);
-  const clr   = scoreColor(score);
-  const gclr  = gaugeColor(score);
-  document.getElementById(idPrefix + '-score').textContent = score.toFixed(1);
-  document.getElementById(idPrefix + '-score').style.color = clr;
-  document.getElementById(idPrefix + '-label').textContent = label;
-  document.getElementById(idPrefix + '-label').style.color = clr;
-  const fill = document.getElementById(idPrefix + '-gauge');
-  fill.style.width = score + '%';
-  fill.style.background = gclr;
-  document.getElementById(idPrefix + '-pct').textContent = 'Percentile: ' + pctile + '%';
-}
-
+// ── Forward returns ───────────────────────────────────────────────────────────
 function renderReturnCols(containerId, data, periods, keys) {
   const el = document.getElementById(containerId);
   el.innerHTML = periods.map((p, i) => {
@@ -540,50 +664,25 @@ function buildQuintileChart(usReturns, twReturns) {
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: labels,
+      labels,
       datasets: [
-        {
-          label: 'SPY 20d Avg Return (%)',
-          data: usReturns,
+        { label: 'SPY 20d Avg Return (%)', data: usReturns,
           backgroundColor: ['#1f6335','#238636','#2ea043','#3fb950','#56d364'],
-          borderRadius: 4,
-          borderSkipped: false,
-        },
-        {
-          label: 'TAIEX 20d Avg Return (%)',
-          data: twReturns,
+          borderRadius: 4, borderSkipped: false },
+        { label: 'TAIEX 20d Avg Return (%)', data: twReturns,
           backgroundColor: ['#0d3a6e','#1158a6','#1a73c8','#2188ff','#58a6ff'],
-          borderRadius: 4,
-          borderSkipped: false,
-        }
+          borderRadius: 4, borderSkipped: false }
       ]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: true,
+      responsive: true, maintainAspectRatio: true,
       plugins: {
-        legend: {
-          labels: { color: '#8b949e', font: { size: 11 }, boxWidth: 12 }
-        },
-        tooltip: {
-          callbacks: {
-            label: ctx => ` ${ctx.dataset.label}: +${ctx.parsed.y.toFixed(2)}%`
-          }
-        }
+        legend: { labels: { color: '#8b949e', font: { size: 11 }, boxWidth: 12 } },
+        tooltip: { callbacks: { label: c => ` ${c.dataset.label}: +${c.parsed.y.toFixed(2)}%` } }
       },
       scales: {
-        x: {
-          ticks: { color: '#8b949e', font: { size: 10 } },
-          grid: { color: '#21262d' }
-        },
-        y: {
-          ticks: {
-            color: '#8b949e',
-            font: { size: 10 },
-            callback: v => '+' + v.toFixed(1) + '%'
-          },
-          grid: { color: '#21262d' }
-        }
+        x: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: '#21262d' } },
+        y: { ticks: { color: '#8b949e', font: { size: 10 }, callback: v => '+' + v.toFixed(1) + '%' }, grid: { color: '#21262d' } }
       }
     }
   });
@@ -591,28 +690,64 @@ function buildQuintileChart(usReturns, twReturns) {
 
 // ── Overlay Chart (EN: US score + SPY) ───────────────────────────────────────
 let _overlayChart = null;
-let _overlayData = null;
+let _overlayData  = null;
 
-function setRange(btn, days) {
-  document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  if (_overlayData) buildOverlayChart(_overlayData, days);
+function dateFmtFn(n) {
+  // 3M: "Mar-05", 1Y: "2025-06", 3Y/All: "2024"
+  if (n <= 90)  return d => { const dt = new Date(d); return dt.toLocaleDateString('en-US', { month: 'short', day: '2-digit' }).replace(' ', '-'); };
+  if (n <= 400) return d => d.substring(0, 7);  // "2025-06"
+  return d => d.substring(0, 4);                 // "2024"
 }
 
 function buildOverlayChart(overlayData, rangeDays) {
   _overlayData = overlayData;
-  const allDates = overlayData.dates;
+  const allDates  = overlayData.dates;
   const allScores = overlayData.us_score;
   const spyMap = {};
   overlayData.spy_dates.forEach((d, i) => { spyMap[d] = overlayData.spy[i]; });
 
-  const n = rangeDays > 0 ? Math.min(rangeDays, allDates.length) : allDates.length;
-  const dates = allDates.slice(-n);
+  const n      = rangeDays > 0 ? Math.min(rangeDays, allDates.length) : allDates.length;
+  const dates  = allDates.slice(-n);
   const scores = allScores.slice(-n);
   const prices = dates.map(d => spyMap[d] !== undefined ? spyMap[d] : null);
 
   if (_overlayChart) { _overlayChart.destroy(); _overlayChart = null; }
   const ctx = document.getElementById('overlayChart').getContext('2d');
+
+  const fmtDate = dateFmtFn(n);
+
+  // "NOW" dot plugin — marks last valid score point
+  const nowDotPlugin = {
+    id: 'nowDot',
+    afterDatasetsDraw(chart) {
+      const ds0   = chart.data.datasets[0];
+      const meta0 = chart.getDatasetMeta(0);
+      // Find last non-null point
+      let lastIdx = -1;
+      for (let i = ds0.data.length - 1; i >= 0; i--) {
+        if (ds0.data[i] != null) { lastIdx = i; break; }
+      }
+      if (lastIdx < 0) return;
+      const pt = meta0.data[lastIdx];
+      const { ctx: c } = chart;
+      const zi  = getZoneIndex(scores[lastIdx]);
+      const clr = ZONE_TEXT_COLORS[zi];
+      c.save();
+      c.beginPath();
+      c.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+      c.fillStyle = clr;
+      c.fill();
+      c.strokeStyle = '#fff';
+      c.lineWidth = 1.5;
+      c.stroke();
+      // "NOW" label
+      c.fillStyle = '#fff';
+      c.font = 'bold 9px sans-serif';
+      c.textAlign = 'right';
+      c.fillText('NOW', pt.x - 7, pt.y - 6);
+      c.restore();
+    }
+  };
 
   const zonePlugin = {
     id: 'bgZones',
@@ -622,23 +757,45 @@ function buildOverlayChart(overlayData, rangeDays) {
       c.save(); c.globalAlpha = 0.10;
       for (let i = 0; i < scores.length - 1; i++) {
         const s = scores[i]; if (s == null) continue;
-        const x0 = scales.x.getPixelForValue(i), x1 = scales.x.getPixelForValue(i + 1);
-        if (s < 30) { c.fillStyle = '#2ea043'; c.fillRect(x0, top, x1 - x0, bottom - top); }
+        const x0 = scales.x.getPixelForValue(i);
+        const x1 = scales.x.getPixelForValue(i + 1);
+        if (s < 30)      { c.fillStyle = '#2ea043'; c.fillRect(x0, top, x1 - x0, bottom - top); }
         else if (s > 70) { c.fillStyle = '#da3633'; c.fillRect(x0, top, x1 - x0, bottom - top); }
       }
       c.restore();
     }
   };
 
-  const dateFmt = n <= 60 ? d => d.substring(5) : n <= 252 ? d => d.substring(2, 7) : d => d.substring(0, 7);
-
   _overlayChart = new Chart(ctx, {
-    type: 'line', plugins: [zonePlugin],
+    type: 'line',
+    plugins: [zonePlugin, nowDotPlugin],
     data: {
       labels: dates,
       datasets: [
-        { label: 'Sentiment Score', data: scores, yAxisID: 'y-score', borderColor: '#58a6ff', backgroundColor: 'transparent', borderWidth: 2, pointRadius: n <= 60 ? 2 : 0, tension: 0.2, order: 1 },
-        { label: 'SPY Price', data: prices, yAxisID: 'y-price', borderColor: 'rgba(88,166,255,0.3)', backgroundColor: 'rgba(88,166,255,0.05)', borderWidth: 1, pointRadius: 0, fill: true, tension: 0.2, order: 2 }
+        {
+          label: 'Sentiment Score',
+          data: scores,
+          yAxisID: 'y-score',
+          borderColor: '#58a6ff',
+          backgroundColor: 'transparent',
+          borderWidth: 2.5,
+          pointRadius: n <= 63 ? 2 : 0,
+          tension: 0.2,
+          order: 1,
+          z: 10
+        },
+        {
+          label: 'SPY Price',
+          data: prices,
+          yAxisID: 'y-price',
+          borderColor: 'rgba(88,166,255,0.25)',
+          backgroundColor: 'rgba(88,166,255,0.07)',
+          borderWidth: 1,
+          pointRadius: 0,
+          fill: true,
+          tension: 0.2,
+          order: 2
+        }
       ]
     },
     options: {
@@ -648,17 +805,45 @@ function buildOverlayChart(overlayData, rangeDays) {
         legend: { labels: { color: '#8b949e', font: { size: 10 }, boxWidth: 10 } },
         tooltip: { callbacks: {
           title: items => items[0].label,
-          label: c => c.datasetIndex === 0 ? ` Score: ${c.parsed.y?.toFixed(1)}` : ` SPY: $${c.parsed.y?.toFixed(2)}`
+          label: c => c.datasetIndex === 0
+            ? ` Score: ${c.parsed.y?.toFixed(1)}`
+            : ` SPY: $${c.parsed.y?.toFixed(2)}`
         }}
       },
       scales: {
-        x: { ticks: { color: '#8b949e', font: { size: 9 }, maxTicksLimit: 8, callback: (v, i) => dateFmt(dates[i] || ''), maxRotation: 0 }, grid: { color: '#21262d' } },
-        'y-score': { type: 'linear', position: 'left', min: 0, max: 100, ticks: { color: '#58a6ff', font: { size: 10 }, stepSize: 20 }, grid: { color: '#21262d' }, title: { display: true, text: 'Score', color: '#58a6ff', font: { size: 10 } } },
-        'y-price': { type: 'linear', position: 'right', ticks: { color: '#8b949e', font: { size: 10 }, callback: v => '$' + v.toFixed(0) }, grid: { drawOnChartArea: false }, title: { display: true, text: 'SPY', color: '#8b949e', font: { size: 10 } } }
+        x: {
+          ticks: {
+            color: '#8b949e', font: { size: 9 }, maxTicksLimit: 8,
+            callback: (v, i) => fmtDate(dates[i] || ''),
+            maxRotation: 0
+          },
+          grid: { color: '#21262d' }
+        },
+        'y-score': {
+          type: 'linear', position: 'left', min: 0, max: 100,
+          ticks: { color: '#58a6ff', font: { size: 10 }, stepSize: 20 },
+          grid: { color: '#21262d' },
+          title: { display: true, text: 'Score', color: '#58a6ff', font: { size: 10 } }
+        },
+        'y-price': {
+          type: 'linear', position: 'right',
+          ticks: { color: '#8b949e', font: { size: 10 }, callback: v => '$' + v.toFixed(0) },
+          grid: { drawOnChartArea: false },
+          title: { display: true, text: 'SPY', color: '#8b949e', font: { size: 10 } }
+        }
       }
     }
   });
 }
+
+// Range button wiring
+document.querySelectorAll('.range-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (_overlayData) buildOverlayChart(_overlayData, parseInt(btn.dataset.days));
+  });
+});
 
 // ── Signal rendering ──────────────────────────────────────────────────────────
 function renderSignal(summary) {
@@ -670,7 +855,7 @@ function renderSignal(summary) {
   const badge = document.getElementById('signal-badge');
   badge.textContent = sigWord;
   badge.className = 'signal-badge';
-  if (sigWord === 'BUY')       badge.classList.add('badge-buy');
+  if      (sigWord === 'BUY')  badge.classList.add('badge-buy');
   else if (sigWord === 'SELL') badge.classList.add('badge-sell');
   else                         badge.classList.add('badge-hold');
 
@@ -681,37 +866,36 @@ function renderSignal(summary) {
 
 // ── Market data rendering ─────────────────────────────────────────────────────
 function renderMarketData(snap) {
-  const us = snap.us_market || {};
-  const tw = snap.tw_market || {};
+  const us  = snap.us_market || {};
+  const tw  = snap.tw_market || {};
   const ret = snap.tw_retail_indicators || {};
   const gl  = snap.global_context || {};
 
-  document.getElementById('mkt-spy').textContent   = '$' + fmtNum(us.SPY_close || 0);
-  document.getElementById('mkt-spy-sub').textContent = fmtPct(us.SPY_20d_return_pct || 0, 2) + ' 20d';
+  document.getElementById('mkt-spy').textContent      = '$' + fmtNum(us.SPY_close || 0);
+  document.getElementById('mkt-spy-sub').textContent  = fmtPct(us.SPY_20d_return_pct || 0, 2) + ' 20d';
 
   const vixEl = document.getElementById('mkt-vix');
-  vixEl.textContent = fmtNum(us.VIX || 0);
-  vixEl.style.color = (us.VIX || 0) > 30 ? '#f85149' : (us.VIX || 0) > 20 ? '#e3b341' : '#3fb950';
+  vixEl.textContent  = fmtNum(us.VIX || 0);
+  vixEl.style.color  = (us.VIX || 0) > 30 ? '#f85149' : (us.VIX || 0) > 20 ? '#e3b341' : '#3fb950';
 
-  document.getElementById('mkt-taiex').textContent   = fmtNum(tw.TAIEX_close || 0, 0);
+  document.getElementById('mkt-taiex').textContent     = fmtNum(tw.TAIEX_close || 0, 0);
   document.getElementById('mkt-taiex-sub').textContent = 'RSI ' + (tw.TAIEX_RSI14 || '--');
 
-  document.getElementById('mkt-tsmc').textContent   = fmtNum(tw.TSMC_close || 0, 0);
-  document.getElementById('mkt-tsmc-sub').textContent = (tw.TSMC_vs_52w_high_pct || '--') + '% of 52w high';
+  document.getElementById('mkt-tsmc').textContent      = fmtNum(tw.TSMC_close || 0, 0);
+  document.getElementById('mkt-tsmc-sub').textContent  = (tw.TSMC_vs_52w_high_pct || '--') + '% of 52w high';
 
-  document.getElementById('mkt-gold').textContent   = '$' + fmtNum(gl.Gold || 0, 0);
-
-  document.getElementById('mkt-10y').textContent = (us.US_10Y_yield || '--') + '%';
+  document.getElementById('mkt-gold').textContent = '$' + fmtNum(gl.Gold || 0, 0);
+  document.getElementById('mkt-10y').textContent  = (us.US_10Y_yield || '--') + '%';
 
   const m5d = ret.margin_5d_change_pct;
   const mEl = document.getElementById('mkt-margin');
-  mEl.textContent = m5d !== undefined ? fmtPct(m5d, 2) : '--';
-  mEl.style.color = m5d > 2 ? '#f85149' : m5d < -2 ? '#3fb950' : '#e3b341';
+  mEl.textContent  = m5d !== undefined ? fmtPct(m5d, 2) : '--';
+  mEl.style.color  = m5d > 2 ? '#f85149' : m5d < -2 ? '#3fb950' : '#e3b341';
 
   const fw  = ret.foreign_net_TWD;
   const fEl = document.getElementById('mkt-foreign');
-  fEl.textContent = fw !== undefined ? 'TWD ' + (fw > 0 ? '+' : '') + fmtNum(fw, 1) + 'B' : '--';
-  fEl.style.color = fw >= 0 ? '#3fb950' : '#f85149';
+  fEl.textContent  = fw !== undefined ? 'TWD ' + (fw > 0 ? '+' : '') + fmtNum(fw, 1) + 'B' : '--';
+  fEl.style.color  = fw >= 0 ? '#3fb950' : '#f85149';
   const days = ret.foreign_consecutive_days || 0;
   const dir  = ret.foreign_consecutive_direction || '';
   document.getElementById('mkt-foreign-sub').textContent = days + 'd ' + dir;
@@ -732,13 +916,13 @@ async function loadDashboard() {
     document.getElementById('header-date').textContent = 'As of ' + date;
     document.getElementById('footer-date').textContent = date;
 
-    // 1. Scores
-    const usScore  = fwdData.us_current_score;
-    const twScore  = fwdData.tw_current_score;
-    const usPct    = quintileData.us_percentile;
-    const twPct    = quintileData.tw_percentile;
-    renderScoreCard('us', usScore, usPct);
-    renderScoreCard('tw', twScore, twPct);
+    // 1. Thermometers
+    const usScore = fwdData.us_current_score;
+    const twScore = fwdData.tw_current_score;
+    const usPct   = quintileData.us_percentile;
+    const twPct   = quintileData.tw_percentile;
+    renderThermometer('us', usScore, usPct);
+    renderThermometer('tw', twScore, twPct);
 
     // 2. Forward returns
     renderReturnCols('spy-returns', fwdData.us_forward,
@@ -762,8 +946,8 @@ async function loadDashboard() {
       `Historically, SPY returns +${usQ1ret}% avg over 20 days from this zone vs +${usQ5ret}% from Extreme Greed. ` +
       `Fear is the better entry.`;
 
-    // 4. Overlay chart
-    buildOverlayChart(overlayData, 30);
+    // 4. Overlay chart — default 1Y (252 trading days)
+    buildOverlayChart(overlayData, 252);
 
     // 5. Signal
     renderSignal(agentData.summary);
@@ -776,18 +960,14 @@ async function loadDashboard() {
     document.getElementById('us-narrative').textContent  = usAgent.narrative  || '';
     const usFactorsEl = document.getElementById('us-factors');
     (usAgent.key_factors || []).forEach(f => {
-      const li = document.createElement('li');
-      li.textContent = f;
-      usFactorsEl.appendChild(li);
+      const li = document.createElement('li'); li.textContent = f; usFactorsEl.appendChild(li);
     });
 
     document.getElementById('tw-conviction').textContent = twAgent.conviction || '--';
     document.getElementById('tw-narrative').textContent  = twAgent.narrative  || '';
     const twFactorsEl = document.getElementById('tw-factors');
     (twAgent.key_factors || []).forEach(f => {
-      const li = document.createElement('li');
-      li.textContent = f;
-      twFactorsEl.appendChild(li);
+      const li = document.createElement('li'); li.textContent = f; twFactorsEl.appendChild(li);
     });
 
     // 7. Market data
