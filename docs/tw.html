@@ -106,16 +106,53 @@ body {
   font-size: 0.78em; color: #8b949e; font-weight: 700;
   text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
 }
-.returns-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-.ret-col { text-align: center; }
-.ret-col .period {
-  font-size: 0.60em; color: #8b949e;
-  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px;
-}
-.ret-col .avg { font-size: 0.95em; font-weight: 700; margin-bottom: 2px; }
-.ret-col .wr  { font-size: 0.60em; color: #8b949e; margin-bottom: 2px; }
-.ret-col .range { font-size: 0.58em; color: #6e7681; }
 .returns-card .hist-note { font-size: 0.60em; color: #6e7681; margin-top: 8px; text-align: center; }
+
+/* Range bar rows */
+.rbar-row { margin-bottom: 10px; }
+.rbar-row:last-of-type { margin-bottom: 0; }
+.rbar-label {
+  font-size: 0.60em; color: #8b949e;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 4px; font-weight: 700;
+}
+.rbar-track-wrap {
+  display: flex; align-items: center; gap: 5px;
+}
+.rbar-p25 { font-size: 0.58em; color: #8b949e; white-space: nowrap; min-width: 34px; text-align: right; }
+.rbar-p75 { font-size: 0.58em; color: #8b949e; white-space: nowrap; min-width: 34px; text-align: left; }
+.rbar-track {
+  flex: 1; height: 8px; border-radius: 4px;
+  position: relative; overflow: visible;
+  background: #21262d;
+}
+.rbar-neg {
+  position: absolute; top: 0; height: 100%;
+  background: rgba(248,81,73,0.55);
+  border-radius: 4px 0 0 4px;
+}
+.rbar-pos {
+  position: absolute; top: 0; height: 100%;
+  background: rgba(63,185,80,0.55);
+  border-radius: 0 4px 4px 0;
+}
+.rbar-dot {
+  position: absolute; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px; height: 9px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1.5px solid #0d1117;
+  z-index: 3;
+}
+.rbar-meta {
+  font-size: 0.60em; color: #8b949e;
+  margin-top: 3px; text-align: center;
+}
+.rbar-avg { font-weight: 700; color: #e6edf3; }
+.rbar-wr-green  { color: #3fb950; }
+.rbar-wr-yellow { color: #e3b341; }
+.rbar-wr-red    { color: #f85149; }
 
 /* ── SIGNAL & ANALYSIS ── */
 .signal-block {
@@ -242,7 +279,6 @@ body {
   .thermo-grid  { grid-template-columns: 1fr; }
   .returns-grid { grid-template-columns: 1fr; }
   .mkt-grid     { grid-template-columns: repeat(4, 1fr); }
-  .returns-cols { grid-template-columns: repeat(4, 1fr); }
   .header h1    { font-size: 1.2em; }
   .lang-switch  { font-size: 0.68em; padding: 4px 8px; }
   .signal-top   { flex-wrap: wrap; }
@@ -308,12 +344,12 @@ body {
   <div class="returns-grid">
     <div class="returns-card">
       <div class="ticker">SPY（美股）</div>
-      <div class="returns-cols" id="spy-returns"></div>
+      <div id="spy-returns"></div>
       <div class="hist-note" id="spy-n"></div>
     </div>
     <div class="returns-card">
       <div class="ticker">加權指數（台股）</div>
-      <div class="returns-cols" id="taiex-returns"></div>
+      <div id="taiex-returns"></div>
       <div class="hist-note" id="taiex-n"></div>
     </div>
   </div>
@@ -505,18 +541,49 @@ function fmtNum(v, decimals) {
   return v.toLocaleString('zh-TW', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 }
 
-// ── Forward returns ───────────────────────────────────────────────────────────
-function renderReturnCols(containerId, data, periods, keys) {
+// ── Forward returns (range bar) ───────────────────────────────────────────────
+function renderRangeBars(containerId, data, periods, keys, labels) {
+  // labels: { avg: '均值', win: '勝率' }
   const el = document.getElementById(containerId);
   el.innerHTML = periods.map((p, i) => {
-    const d   = data[keys[i]];
-    const clr = d.mean >= 0 ? '#3fb950' : '#f85149';
-    return `<div class="ret-col">
-      <div class="period">${p}</div>
-      <div class="avg" style="color:${clr}">${fmtPct(d.mean)}</div>
-      <div class="wr">${d.positive_pct.toFixed(0)}% 勝率</div>
-      <div class="range">${fmtPct(d.p25, 1)}~${fmtPct(d.p75, 1)}</div>
-    </div>`;
+    const d    = data[keys[i]];
+    const p25  = d.p25;
+    const p75  = d.p75;
+    const mean = d.mean;
+    const wr   = d.positive_pct;
+
+    const span = p75 - p25;
+    const zeroOffset = (-p25) / span;
+    const zeroPos = Math.max(0, Math.min(1, zeroOffset));
+    const avgPos  = span > 0 ? Math.max(0.02, Math.min(0.98, (mean - p25) / span)) : 0.5;
+
+    const negWidth = (zeroPos * 100).toFixed(1);
+    const posLeft  = (zeroPos * 100).toFixed(1);
+    const posWidth = ((1 - zeroPos) * 100).toFixed(1);
+    const avgLeft  = (avgPos * 100).toFixed(1);
+
+    const wrClass = wr >= 60 ? 'rbar-wr-green' : wr >= 50 ? 'rbar-wr-yellow' : 'rbar-wr-red';
+    const avgSign = mean >= 0 ? '+' : '';
+    const p25Fmt  = (p25 >= 0 ? '+' : '') + p25.toFixed(1) + '%';
+    const p75Fmt  = '+' + p75.toFixed(1) + '%';
+
+    return `<div class="rbar-row">
+  <div class="rbar-label">${p}</div>
+  <div class="rbar-track-wrap">
+    <span class="rbar-p25">${p25Fmt}</span>
+    <div class="rbar-track">
+      ${zeroPos > 0 ? `<div class="rbar-neg" style="left:0%;width:${negWidth}%"></div>` : ''}
+      ${zeroPos < 1 ? `<div class="rbar-pos" style="left:${posLeft}%;width:${posWidth}%"></div>` : ''}
+      <div class="rbar-dot" style="left:${avgLeft}%"></div>
+    </div>
+    <span class="rbar-p75">${p75Fmt}</span>
+  </div>
+  <div class="rbar-meta">
+    <span class="rbar-avg">${labels.avg} ${avgSign}${mean.toFixed(1)}%</span>
+    &nbsp;·&nbsp;
+    <span class="${wrClass}">${wr.toFixed(0)}% ${labels.win}</span>
+  </div>
+</div>`;
   }).join('');
 }
 
@@ -800,15 +867,17 @@ async function loadDashboard() {
     renderThermometer('tw', fwdData.tw_current_score, quintileData.tw_percentile, zoneReturns, 'tw');
 
     // 2. 預期報酬
-    renderReturnCols('spy-returns', fwdData.us_forward,
-      ['5日','10日','20日','60日'],
-      ['spy_fwd_5d','spy_fwd_10d','spy_fwd_20d','spy_fwd_60d']);
+    renderRangeBars('spy-returns', fwdData.us_forward,
+      ['5天','10天','20天','60天'],
+      ['spy_fwd_5d','spy_fwd_10d','spy_fwd_20d','spy_fwd_60d'],
+      { avg: '均值', win: '勝率' });
     document.getElementById('spy-n').textContent =
       (fwdData.us_forward.spy_fwd_20d.n || '--') + ' 歷史相似天數';
 
-    renderReturnCols('taiex-returns', fwdData.tw_forward,
-      ['5日','10日','20日','60日'],
-      ['taiex_fwd_5d','taiex_fwd_10d','taiex_fwd_20d','taiex_fwd_60d']);
+    renderRangeBars('taiex-returns', fwdData.tw_forward,
+      ['5天','10天','20天','60天'],
+      ['taiex_fwd_5d','taiex_fwd_10d','taiex_fwd_20d','taiex_fwd_60d'],
+      { avg: '均值', win: '勝率' });
     document.getElementById('taiex-n').textContent =
       (fwdData.tw_forward.taiex_fwd_20d.n || '--') + ' 歷史相似天數';
 
