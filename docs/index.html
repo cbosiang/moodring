@@ -11,7 +11,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #0d1117;
   color: #e6edf3;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding-bottom: 40px;
 }
@@ -328,6 +328,32 @@ body {
 .score-card.extreme-fear { border-color: #238636; box-shadow: 0 0 15px rgba(63,185,80,0.3); }
 .score-card.extreme-greed { border-color: #da3633; box-shadow: 0 0 15px rgba(248,81,73,0.3); }
 
+/* Desktop: wider layout, side-by-side sections */
+@media (min-width: 769px) {
+  .section { padding: 18px 24px; }
+  .market-selector { gap: 10px; }
+  .market-btn { padding: 10px 20px; font-size: 0.9em; }
+  .thermo-card { padding: 24px; }
+  .thermo-card .thermo-score { font-size: 4em; }
+  .rbar-row { padding: 6px 0; }
+  .rbar-label { font-size: 0.82em; min-width: 70px; }
+  .rbar-p25, .rbar-p75 { font-size: 0.72em; min-width: 55px; }
+  .rbar-meta { font-size: 0.78em; }
+  .chart-wrap { padding: 20px; }
+  .chart-wrap canvas { max-height: 350px; }
+  .signal-block { padding: 20px; }
+  .mkt-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .mkt-item { padding: 14px 10px; }
+  .range-btn { padding: 7px 16px; font-size: 0.8em; }
+  .header h1 { font-size: 1.8em; }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body { max-width: 900px; }
+}
+
+/* Mobile: compact single column */
 @media (max-width: 480px) {
   .mkt-grid { grid-template-columns: repeat(4, 1fr); }
   .header h1 { font-size: 1.2em; }
