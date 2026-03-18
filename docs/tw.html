@@ -170,6 +170,14 @@ body {
 
 .hidden { display: none !important; }
 
+@keyframes extremePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.thermo-card.extreme-zone { animation: extremePulse 2s ease-in-out infinite; }
+.thermo-card.extreme-fear { border-color: #238636; box-shadow: 0 0 15px rgba(63,185,80,0.3); }
+.thermo-card.extreme-greed { border-color: #da3633; box-shadow: 0 0 15px rgba(248,81,73,0.3); }
+
 @media (max-width: 480px) {
   .mkt-grid { grid-template-columns: repeat(4, 1fr); }
   .header h1 { font-size: 1.2em; }
@@ -300,13 +308,13 @@ const MARKETS = {
 
 // ── Zone definitions (TW labels) ──────────────────────────────────────────────
 const ZONES = [
-  { min:  0, max: 15, label: '極度恐懼', color: '#0a4020' },
+  { min:  0, max: 15, label: '極度恐懼', color: '#0a4020', extreme: true },
   { min: 15, max: 30, label: '恐懼',     color: '#1a6b35' },
   { min: 30, max: 40, label: '謹慎',     color: '#2d8f4e' },
   { min: 40, max: 60, label: '中性',     color: '#8a7a10' },
   { min: 60, max: 70, label: '樂觀',     color: '#b84a1a' },
   { min: 70, max: 85, label: '貪婪',     color: '#c53030' },
-  { min: 85, max:100, label: '極度貪婪', color: '#7a1a1a' },
+  { min: 85, max:100, label: '極度貪婪', color: '#7a1a1a', extreme: true },
 ];
 const ZONE_TEXT_COLORS = ['#3fb950','#56d364','#7ee787','#e3b341','#f0883e','#f85149','#ff7b72'];
 
@@ -340,6 +348,15 @@ function renderThermometer(score, pctile, zoneReturns, mktKey) {
   const cfg = MARKETS[mktKey];
   const zi  = getZoneIndex(score);
   const clr = ZONE_TEXT_COLORS[zi];
+  const zone = ZONES[zi];
+
+  const card = document.querySelector('.thermo-card');
+  card.classList.remove('extreme-zone', 'extreme-fear', 'extreme-greed');
+  if (zone.extreme) {
+    card.classList.add('extreme-zone');
+    if (zi === 0) card.classList.add('extreme-fear');
+    if (zi === ZONES.length - 1) card.classList.add('extreme-greed');
+  }
 
   document.getElementById('thermo-market-label').textContent = cfg.labelLong;
 
