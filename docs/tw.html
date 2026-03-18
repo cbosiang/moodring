@@ -696,7 +696,7 @@ function buildOverlayChart(overlayData, rangeDays, mktKey) {
       datasets: [
         { label: cfg.label + '情緒分數', data: scores, yAxisID: 'y-score',
           borderColor: mcol, backgroundColor: 'transparent',
-          borderWidth: 2.5, pointRadius: n <= 63 ? 2 : 0, tension: 0.2, order: 1, z: 10, spanGaps: false },
+          borderWidth: 1.2, pointRadius: 0, tension: 0.2, order: 1, z: 10, spanGaps: false },
         { label: cfg.index, data: prices, yAxisID: 'y-price',
           borderColor: hexToRgba(mcol, 0.25), backgroundColor: hexToRgba(mcol, 0.07),
           borderWidth: 1, pointRadius: 0, fill: true, tension: 0.2, order: 2, spanGaps: false }
