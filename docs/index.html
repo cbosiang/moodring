@@ -41,6 +41,33 @@ body {
 }
 .lang-switch:hover { background: #21262d; }
 
+/* ── MARKET SELECTOR ── */
+.market-selector {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #21262d;
+  flex-wrap: wrap;
+}
+.market-btn {
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #8b949e;
+  font-weight: 700;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.18s;
+  flex: 1;
+  min-width: 52px;
+  text-align: center;
+}
+.market-btn:hover { border-color: #58a6ff; color: #e6edf3; }
+.market-btn.active {
+  color: #fff;
+}
+
 .section { padding: 14px 16px; border-bottom: 1px solid #21262d; }
 .section:last-child { border-bottom: none; }
 .section-title {
@@ -53,7 +80,6 @@ body {
 }
 
 /* ── THERMOMETER ── */
-.thermo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .thermo-card {
   background: #161b22;
   border: 1px solid #30363d;
@@ -111,7 +137,6 @@ body {
 .thermo-percentile { font-size: 0.68em; color: #8b949e; margin-top: 6px; }
 
 /* ── FORWARD RETURNS ── */
-.returns-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .returns-card {
   background: #161b22;
   border: 1px solid #30363d;
@@ -132,9 +157,7 @@ body {
   text-transform: uppercase; letter-spacing: 1px;
   margin-bottom: 4px; font-weight: 700;
 }
-.rbar-track-wrap {
-  display: flex; align-items: center; gap: 5px;
-}
+.rbar-track-wrap { display: flex; align-items: center; gap: 5px; }
 .rbar-p25 { font-size: 0.58em; color: #8b949e; white-space: nowrap; min-width: 34px; text-align: right; }
 .rbar-p75 { font-size: 0.58em; color: #8b949e; white-space: nowrap; min-width: 34px; text-align: left; }
 .rbar-track {
@@ -161,10 +184,7 @@ body {
   border: 1.5px solid #0d1117;
   z-index: 3;
 }
-.rbar-meta {
-  font-size: 0.60em; color: #8b949e;
-  margin-top: 3px; text-align: center;
-}
+.rbar-meta { font-size: 0.60em; color: #8b949e; margin-top: 3px; text-align: center; }
 .rbar-avg { font-weight: 700; color: #e6edf3; }
 .rbar-wr-green  { color: #3fb950; }
 .rbar-wr-yellow { color: #e3b341; }
@@ -176,7 +196,6 @@ body {
   border: 1px solid #30363d;
   border-radius: 10px;
   padding: 16px;
-  margin-bottom: 0;
 }
 .signal-top {
   display: flex;
@@ -194,25 +213,13 @@ body {
 .badge-sell { background: #2d1116; color: #f85149; border: 1px solid #6e1c1c; }
 .cross-market-text { font-size: 0.80em; color: #8b949e; line-height: 1.5; }
 
-.agent-divider {
-  border: none;
-  border-top: 1px solid #30363d;
-  margin: 14px 0 12px;
-}
+.agent-divider { border: none; border-top: 1px solid #30363d; margin: 14px 0 12px; }
 .agent-section-label {
-  font-size: 0.64em;
-  color: #58a6ff;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 0.64em; color: #58a6ff;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  font-weight: 700; margin-bottom: 8px;
 }
-.agent-narrative {
-  font-size: 0.78em;
-  color: #c9d1d9;
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
+.agent-narrative { font-size: 0.78em; color: #c9d1d9; line-height: 1.6; margin-bottom: 10px; }
 .agent-factors { list-style: none; padding: 0; margin: 0 0 10px; }
 .agent-factors li {
   font-size: 0.68em; color: #8b949e;
@@ -220,44 +227,30 @@ body {
   position: relative; line-height: 1.4;
   border-top: 1px solid #21262d;
 }
-.agent-factors li::before {
-  content: '›'; position: absolute; left: 0; color: #58a6ff;
-}
+.agent-factors li::before { content: '›'; position: absolute; left: 0; color: #58a6ff; }
 .watch-for-label {
-  font-size: 0.64em;
-  color: #e3b341;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-size: 0.64em; color: #e3b341;
+  text-transform: uppercase; letter-spacing: 1px;
+  font-weight: 700; margin-bottom: 4px;
 }
 .watch-for-text {
-  font-size: 0.72em;
-  color: #e3b341;
-  line-height: 1.5;
-  background: #2d2a00;
-  border: 1px solid #9e6a03;
-  border-radius: 6px;
-  padding: 8px 10px;
-  margin-bottom: 10px;
+  font-size: 0.72em; color: #e3b341; line-height: 1.5;
+  background: #2d2a00; border: 1px solid #9e6a03;
+  border-radius: 6px; padding: 8px 10px; margin-bottom: 10px;
 }
 .outlook-label {
-  font-size: 0.64em;
-  color: #3fb950;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  margin-top: 14px;
-  margin-bottom: 6px;
+  font-size: 0.64em; color: #3fb950;
+  text-transform: uppercase; letter-spacing: 1px;
+  font-weight: 700; margin-top: 14px; margin-bottom: 6px;
 }
 .outlook-text {
-  font-size: 0.76em;
-  color: #7ee787;
-  line-height: 1.6;
-  background: #0d2818;
-  border: 1px solid #1f6335;
-  border-radius: 6px;
-  padding: 10px 12px;
+  font-size: 0.76em; color: #7ee787; line-height: 1.6;
+  background: #0d2818; border: 1px solid #1f6335;
+  border-radius: 6px; padding: 10px 12px;
+}
+.coming-soon {
+  font-size: 0.78em; color: #6e7681; font-style: italic;
+  padding: 10px 0;
 }
 
 /* ── CHARTS ── */
@@ -272,17 +265,11 @@ body {
 
 /* ── EDGE BOX ── */
 .edge-box {
-  background: #0d2818;
-  border: 1px solid #1f6335;
-  border-radius: 8px;
-  padding: 10px 14px;
-  margin-top: 10px;
-  font-size: 0.80em;
+  background: #0d2818; border: 1px solid #1f6335;
+  border-radius: 8px; padding: 10px 14px;
+  margin-top: 10px; font-size: 0.80em;
 }
-.edge-box .edge-title {
-  color: #3fb950; font-weight: 700;
-  margin-bottom: 4px; font-size: 0.90em;
-}
+.edge-box .edge-title { color: #3fb950; font-weight: 700; margin-bottom: 4px; font-size: 0.90em; }
 .edge-box .edge-text { color: #7ee787; line-height: 1.5; }
 
 /* ── MARKET DATA ── */
@@ -291,10 +278,7 @@ body {
   background: #161b22; border: 1px solid #30363d;
   border-radius: 8px; padding: 10px 8px; text-align: center;
 }
-.mkt-item .mkt-label {
-  font-size: 0.60em; color: #8b949e;
-  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
-}
+.mkt-item .mkt-label { font-size: 0.60em; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
 .mkt-item .mkt-value { font-size: 0.88em; font-weight: 700; color: #e6edf3; }
 .mkt-item .mkt-sub   { font-size: 0.58em; color: #6e7681; margin-top: 2px; }
 
@@ -331,13 +315,14 @@ body {
 .range-btn:hover  { border-color: #58a6ff; color: #58a6ff; }
 .range-btn.active { background: #0d419d; border-color: #58a6ff; color: #fff; }
 
+.hidden { display: none !important; }
+
 @media (max-width: 480px) {
-  .thermo-grid  { grid-template-columns: 1fr; }
-  .returns-grid { grid-template-columns: 1fr; }
-  .mkt-grid     { grid-template-columns: repeat(4, 1fr); }
-  .header h1    { font-size: 1.2em; }
-  .lang-switch  { font-size: 0.68em; padding: 4px 8px; }
-  .signal-top   { flex-wrap: wrap; }
+  .mkt-grid { grid-template-columns: repeat(4, 1fr); }
+  .header h1 { font-size: 1.2em; }
+  .lang-switch { font-size: 0.68em; padding: 4px 8px; }
+  .signal-top { flex-wrap: wrap; }
+  .market-btn { padding: 7px 10px; font-size: 0.78em; }
 }
 </style>
 </head>
@@ -351,101 +336,49 @@ body {
   <div class="date" id="header-date">Loading...</div>
 </div>
 
+<!-- MARKET SELECTOR -->
+<div class="market-selector">
+  <button class="market-btn active" data-market="us">US</button>
+  <button class="market-btn" data-market="tw">TW</button>
+  <button class="market-btn" data-market="jp">JP</button>
+  <button class="market-btn" data-market="kr">KR</button>
+  <button class="market-btn" data-market="eu">EU</button>
+</div>
+
 <!-- 1. CURRENT SENTIMENT -->
 <div class="section">
   <div class="section-title">Current Sentiment</div>
-  <div class="thermo-grid">
-    <div class="thermo-card">
-      <div class="market-label">US Market</div>
-      <div class="thermo-score-row">
-        <span class="thermo-score" id="us-score">--</span>
-        <span class="thermo-zone-label" id="us-label">Loading...</span>
-      </div>
-      <div class="thermo-expected" id="us-expected"></div>
-      <div class="thermo-bar-wrap">
-        <div class="thermo-marker-row">
-          <div class="thermo-marker" id="us-marker" style="left:50%">
-            <div class="thermo-marker-arrow"></div>
-          </div>
-        </div>
-        <div class="thermo-bar" id="us-bar"></div>
-        <div class="thermo-labels" id="us-zone-labels"></div>
-      </div>
-      <div class="thermo-percentile" id="us-pct">Percentile: --%</div>
+  <div class="thermo-card">
+    <div class="market-label" id="thermo-market-label">US Market</div>
+    <div class="thermo-score-row">
+      <span class="thermo-score" id="mkt-score">--</span>
+      <span class="thermo-zone-label" id="mkt-zone-label">Loading...</span>
     </div>
-    <div class="thermo-card">
-      <div class="market-label">TW Market</div>
-      <div class="thermo-score-row">
-        <span class="thermo-score" id="tw-score">--</span>
-        <span class="thermo-zone-label" id="tw-label">Loading...</span>
-      </div>
-      <div class="thermo-expected" id="tw-expected"></div>
-      <div class="thermo-bar-wrap">
-        <div class="thermo-marker-row">
-          <div class="thermo-marker" id="tw-marker" style="left:50%">
-            <div class="thermo-marker-arrow"></div>
-          </div>
+    <div class="thermo-expected" id="mkt-expected"></div>
+    <div class="thermo-bar-wrap">
+      <div class="thermo-marker-row">
+        <div class="thermo-marker" id="mkt-marker" style="left:50%">
+          <div class="thermo-marker-arrow"></div>
         </div>
-        <div class="thermo-bar" id="tw-bar"></div>
-        <div class="thermo-labels" id="tw-zone-labels"></div>
       </div>
-      <div class="thermo-percentile" id="tw-pct">Percentile: --%</div>
+      <div class="thermo-bar" id="mkt-bar"></div>
+      <div class="thermo-labels" id="mkt-zone-labels"></div>
     </div>
+    <div class="thermo-percentile" id="mkt-pct">Percentile: --%</div>
   </div>
 </div>
 
 <!-- 2. EXPECTED FORWARD RETURNS -->
 <div class="section">
   <div class="section-title">Expected Forward Returns</div>
-  <div class="returns-grid">
-    <div class="returns-card">
-      <div class="ticker">SPY (US)</div>
-      <div id="spy-returns"></div>
-      <div class="hist-note" id="spy-n"></div>
-    </div>
-    <div class="returns-card">
-      <div class="ticker">TAIEX (TW)</div>
-      <div id="taiex-returns"></div>
-      <div class="hist-note" id="taiex-n"></div>
-    </div>
+  <div class="returns-card">
+    <div class="ticker" id="fwd-ticker">SPY (US)</div>
+    <div id="mkt-returns"></div>
+    <div class="hist-note" id="mkt-returns-n"></div>
   </div>
 </div>
 
-<!-- 3. SIGNAL & ANALYSIS (MERGED) -->
-<div class="section">
-  <div class="section-title">Signal &amp; Analysis</div>
-  <div class="signal-block">
-
-    <!-- Signal badge + cross-market -->
-    <div class="signal-top">
-      <div class="signal-badge badge-hold" id="signal-badge">HOLD</div>
-      <div class="cross-market-text" id="cross-market-text">Loading...</div>
-    </div>
-
-    <!-- US Analysis -->
-    <hr class="agent-divider">
-    <div class="agent-section-label">&#127482;&#127480; US Analysis</div>
-    <div class="agent-narrative" id="us-narrative">Loading...</div>
-    <ul class="agent-factors" id="us-factors"></ul>
-    <div class="watch-for-label">Watch For</div>
-    <div class="watch-for-text" id="us-watch-for">Loading...</div>
-
-    <!-- TW Analysis -->
-    <hr class="agent-divider">
-    <div class="agent-section-label">&#127481;&#127484; TW Analysis</div>
-    <div class="agent-narrative" id="tw-narrative">Loading...</div>
-    <ul class="agent-factors" id="tw-factors"></ul>
-    <div class="watch-for-label">Watch For</div>
-    <div class="watch-for-text" id="tw-watch-for">Loading...</div>
-
-    <!-- Forward Outlook -->
-    <div class="outlook-label">Forward Outlook</div>
-    <div class="outlook-text" id="forward-outlook">Loading...</div>
-
-  </div>
-</div>
-
-<!-- 4. SENTIMENT VS MARKET -->
+<!-- 3. SENTIMENT VS MARKET -->
 <div class="section">
   <div class="section-title">Sentiment vs Market</div>
   <div style="display:flex;gap:6px;margin-bottom:10px;">
@@ -462,8 +395,16 @@ body {
   </div>
 </div>
 
-<!-- 5. HISTORICAL PROOF -->
+<!-- 4. SIGNAL & ANALYSIS -->
 <div class="section">
+  <div class="section-title">Signal &amp; Analysis</div>
+  <div class="signal-block" id="signal-block">
+    <div id="agent-content">Loading...</div>
+  </div>
+</div>
+
+<!-- 5. HISTORICAL PROOF -->
+<div class="section" id="quintile-section">
   <div class="section-title">Historical Proof</div>
   <div class="chart-wrap">
     <canvas id="quintileChart" height="200"></canvas>
@@ -477,7 +418,7 @@ body {
 <!-- 6. MARKET DATA -->
 <div class="section">
   <div class="section-title">Market Data</div>
-  <div class="mkt-grid">
+  <div class="mkt-grid" id="mkt-data-grid">
     <div class="mkt-item"><div class="mkt-label">SPY</div><div class="mkt-value" id="mkt-spy">--</div><div class="mkt-sub" id="mkt-spy-sub"></div></div>
     <div class="mkt-item"><div class="mkt-label">VIX</div><div class="mkt-value" id="mkt-vix">--</div><div class="mkt-sub">Fear Index</div></div>
     <div class="mkt-item"><div class="mkt-label">TAIEX</div><div class="mkt-value" id="mkt-taiex">--</div><div class="mkt-sub" id="mkt-taiex-sub"></div></div>
@@ -495,7 +436,16 @@ body {
 </div>
 
 <script>
-// ── Zone definitions (EN) ─────────────────────────────────────────────────────
+// ── Market config ─────────────────────────────────────────────────────────────
+const MARKETS = {
+  us: { label: 'US', labelLong: 'US Market', index: 'SPY', scoreProp: 'us_score', scoreDates: 'dates', priceDates: 'spy_dates', prices: 'spy', scoreKey: 'us_current_score', fwdKey: 'us_forward', fwdPrefix: 'spy_fwd_', zonePrefix: 'us_', color: '#58a6ff', agentKey: 'us_agent', fwdTicker: 'SPY (US)', quintileKey: 'us' },
+  tw: { label: 'TW', labelLong: 'TW Market', index: 'TAIEX', scoreProp: 'tw_score', scoreDates: 'dates', priceDates: 'twii_dates', prices: 'twii', scoreKey: 'tw_current_score', fwdKey: 'tw_forward', fwdPrefix: 'taiex_fwd_', zonePrefix: 'tw_', color: '#f0883e', agentKey: 'tw_agent', fwdTicker: 'TAIEX (TW)', quintileKey: 'tw' },
+  jp: { label: 'JP', labelLong: 'JP Market', index: 'Nikkei', scoreProp: 'jp_score', scoreDates: 'jp_dates', priceDates: 'jp_price_dates', prices: 'jp_price', scoreKey: 'jp_current_score', fwdKey: 'jp_forward', fwdPrefix: 'jp_fwd_', zonePrefix: 'jp_', color: '#f85149', agentKey: 'jp_agent', fwdTicker: 'Nikkei (JP)', quintileKey: 'jp' },
+  kr: { label: 'KR', labelLong: 'KR Market', index: 'KOSPI', scoreProp: 'kr_score', scoreDates: 'kr_dates', priceDates: 'kr_price_dates', prices: 'kr_price', scoreKey: 'kr_current_score', fwdKey: 'kr_forward', fwdPrefix: 'kr_fwd_', zonePrefix: 'kr_', color: '#a371f7', agentKey: 'kr_agent', fwdTicker: 'KOSPI (KR)', quintileKey: 'kr' },
+  eu: { label: 'EU', labelLong: 'EU Market', index: 'STOXX50', scoreProp: 'eu_score', scoreDates: 'eu_dates', priceDates: 'eu_price_dates', prices: 'eu_price', scoreKey: 'eu_current_score', fwdKey: 'eu_forward', fwdPrefix: 'eu_fwd_', zonePrefix: 'eu_', color: '#3fb950', agentKey: 'eu_agent', fwdTicker: 'STOXX50 (EU)', quintileKey: 'eu' },
+};
+
+// ── Zone definitions ──────────────────────────────────────────────────────────
 const ZONES = [
   { min:  0, max: 15, label: 'Extreme Fear', color: '#0a4020' },
   { min: 15, max: 30, label: 'Fear',         color: '#1a6b35' },
@@ -505,10 +455,7 @@ const ZONES = [
   { min: 70, max: 85, label: 'Greed',        color: '#c53030' },
   { min: 85, max:100, label: 'Euphoria',     color: '#7a1a1a' },
 ];
-
-const ZONE_TEXT_COLORS = [
-  '#3fb950', '#56d364', '#7ee787', '#e3b341', '#f0883e', '#f85149', '#ff7b72'
-];
+const ZONE_TEXT_COLORS = ['#3fb950','#56d364','#7ee787','#e3b341','#f0883e','#f85149','#ff7b72'];
 
 function getZoneIndex(score) {
   for (let i = 0; i < ZONES.length; i++) {
@@ -517,75 +464,12 @@ function getZoneIndex(score) {
   return ZONES.length - 1;
 }
 
-// ── Find zone data from zone_returns.json by score ───────────────────────────
 function findZoneReturn(zoneReturns, score) {
   if (!zoneReturns || !zoneReturns.zones) return null;
   for (const z of zoneReturns.zones) {
     if (score >= z.lo && score < z.hi) return z;
   }
   return zoneReturns.zones[zoneReturns.zones.length - 1];
-}
-
-// ── Thermometer renderer ──────────────────────────────────────────────────────
-function renderThermometer(prefix, score, pctile, zoneReturns, market) {
-  const zi    = getZoneIndex(score);
-  const clr   = ZONE_TEXT_COLORS[zi];
-  const label = ZONES[zi].label;
-
-  const scoreEl = document.getElementById(prefix + '-score');
-  scoreEl.textContent = score.toFixed(1);
-  scoreEl.style.color = clr;
-  const labelEl = document.getElementById(prefix + '-label');
-  labelEl.textContent = label;
-  labelEl.style.color = clr;
-
-  // Expected return line
-  const expectedEl = document.getElementById(prefix + '-expected');
-  if (expectedEl && zoneReturns) {
-    const zd = findZoneReturn(zoneReturns, score);
-    if (zd) {
-      const avg = market === 'us' ? zd.us_20d_avg : zd.tw_20d_avg;
-      const win = market === 'us' ? zd.us_20d_win : zd.tw_20d_win;
-      if (avg !== undefined && win !== undefined) {
-        const sign = avg >= 0 ? '+' : '';
-        const retClr = avg >= 0 ? '#3fb950' : '#f85149';
-        expectedEl.style.color = retClr;
-        const period = zoneReturns.period || '10yr';
-        expectedEl.textContent = 'Expected: ' + sign + avg.toFixed(2) + '% / 20d (' + win.toFixed(0) + '% win) — based on ' + period;
-      }
-    }
-  }
-
-  const barEl    = document.getElementById(prefix + '-bar');
-  const labelsEl = document.getElementById(prefix + '-zone-labels');
-  barEl.innerHTML = '';
-  labelsEl.innerHTML = '';
-
-  ZONES.forEach((z, i) => {
-    const pct = (z.max - z.min) + '%';
-    const seg = document.createElement('div');
-    seg.className = 'thermo-zone';
-    seg.style.width      = pct;
-    seg.style.background = z.color;
-    if (i === zi) {
-      seg.style.outline       = '2px solid ' + clr;
-      seg.style.outlineOffset = '-1px';
-      seg.style.zIndex        = '2';
-    }
-    barEl.appendChild(seg);
-
-    const nameEl = document.createElement('div');
-    nameEl.className   = 'thermo-zone-name';
-    nameEl.style.width = pct;
-    nameEl.textContent = z.label;
-    if (i === zi) { nameEl.style.color = clr; nameEl.style.fontWeight = '700'; }
-    labelsEl.appendChild(nameEl);
-  });
-
-  document.getElementById(prefix + '-marker').style.left =
-    Math.max(2, Math.min(98, score)) + '%';
-  document.getElementById(prefix + '-pct').textContent =
-    'Percentile: ' + pctile + '%';
 }
 
 // ── Format helpers ────────────────────────────────────────────────────────────
@@ -598,39 +482,89 @@ function fmtNum(v, decimals) {
   return v.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 }
 
+// ── Thermometer renderer (single card) ───────────────────────────────────────
+function renderThermometer(score, pctile, zoneReturns, mktKey) {
+  const cfg = MARKETS[mktKey];
+  const zi  = getZoneIndex(score);
+  const clr = ZONE_TEXT_COLORS[zi];
+
+  document.getElementById('thermo-market-label').textContent = cfg.labelLong;
+
+  const scoreEl = document.getElementById('mkt-score');
+  scoreEl.textContent = score.toFixed(1);
+  scoreEl.style.color = clr;
+
+  const labelEl = document.getElementById('mkt-zone-label');
+  labelEl.textContent = ZONES[zi].label;
+  labelEl.style.color = clr;
+
+  const expectedEl = document.getElementById('mkt-expected');
+  if (zoneReturns) {
+    const zd = findZoneReturn(zoneReturns, score);
+    if (zd) {
+      const avgKey = cfg.zonePrefix + '20d_avg';
+      const winKey = cfg.zonePrefix + '20d_win';
+      const avg = zd[avgKey];
+      const win = zd[winKey];
+      if (avg !== undefined && win !== undefined) {
+        const sign = avg >= 0 ? '+' : '';
+        expectedEl.style.color = avg >= 0 ? '#3fb950' : '#f85149';
+        expectedEl.textContent = 'Expected: ' + sign + avg.toFixed(2) + '% / 20d (' + win.toFixed(0) + '% win) — based on ' + (zoneReturns.period || '10yr');
+      } else {
+        expectedEl.textContent = '';
+      }
+    }
+  }
+
+  const barEl    = document.getElementById('mkt-bar');
+  const labelsEl = document.getElementById('mkt-zone-labels');
+  barEl.innerHTML = '';
+  labelsEl.innerHTML = '';
+
+  ZONES.forEach((z, i) => {
+    const pct = (z.max - z.min) + '%';
+    const seg = document.createElement('div');
+    seg.className = 'thermo-zone';
+    seg.style.width      = pct;
+    seg.style.background = z.color;
+    if (i === zi) { seg.style.outline = '2px solid ' + clr; seg.style.outlineOffset = '-1px'; seg.style.zIndex = '2'; }
+    barEl.appendChild(seg);
+
+    const nameEl = document.createElement('div');
+    nameEl.className   = 'thermo-zone-name';
+    nameEl.style.width = pct;
+    nameEl.textContent = z.label;
+    if (i === zi) { nameEl.style.color = clr; nameEl.style.fontWeight = '700'; }
+    labelsEl.appendChild(nameEl);
+  });
+
+  document.getElementById('mkt-marker').style.left = Math.max(2, Math.min(98, score)) + '%';
+  document.getElementById('mkt-pct').textContent   = 'Percentile: ' + (pctile !== undefined ? pctile : '--') + '%';
+}
+
 // ── Forward returns (range bar) ───────────────────────────────────────────────
-function renderRangeBars(containerId, data, periods, keys, labels) {
-  // labels: { avg: 'avg', win: 'win' }
+function renderRangeBars(containerId, data, periods, keys) {
   const el = document.getElementById(containerId);
+  if (!data) { el.innerHTML = '<div class="coming-soon">Forward return data not available for this market.</div>'; return; }
+
   el.innerHTML = periods.map((p, i) => {
-    const d    = data[keys[i]];
-    const p25  = d.p25;  // may be negative
+    const d = data[keys[i]];
+    if (!d) return '';
+    const p25  = d.p25;
     const p75  = d.p75;
     const mean = d.mean;
     const wr   = d.positive_pct;
-
-    const span = p75 - p25;  // total range width
-    const zeroOffset = (-p25) / span;  // 0..1, where zero falls from left
-
-    // Clamp zero point to [0,1]
-    const zeroPos = Math.max(0, Math.min(1, zeroOffset));
-
-    // Average dot position within [0,1]
-    const avgPos = span > 0 ? Math.max(0.02, Math.min(0.98, (mean - p25) / span)) : 0.5;
-
-    // Negative segment: from left=0 to zeroPos
-    const negWidth  = (zeroPos * 100).toFixed(1);
-    // Positive segment: from zeroPos to right
-    const posLeft   = (zeroPos * 100).toFixed(1);
-    const posWidth  = ((1 - zeroPos) * 100).toFixed(1);
-
-    const avgLeft   = (avgPos * 100).toFixed(1);
-
-    const wrClass = wr >= 60 ? 'rbar-wr-green' : wr >= 50 ? 'rbar-wr-yellow' : 'rbar-wr-red';
-    const avgSign = mean >= 0 ? '+' : '';
-    const p25Fmt  = (p25 >= 0 ? '+' : '') + p25.toFixed(1) + '%';
-    const p75Fmt  = '+' + p75.toFixed(1) + '%';
-
+    const span = p75 - p25;
+    const zeroPos = Math.max(0, Math.min(1, (-p25) / span));
+    const avgPos  = span > 0 ? Math.max(0.02, Math.min(0.98, (mean - p25) / span)) : 0.5;
+    const negWidth = (zeroPos * 100).toFixed(1);
+    const posLeft  = (zeroPos * 100).toFixed(1);
+    const posWidth = ((1 - zeroPos) * 100).toFixed(1);
+    const avgLeft  = (avgPos * 100).toFixed(1);
+    const wrClass  = wr >= 60 ? 'rbar-wr-green' : wr >= 50 ? 'rbar-wr-yellow' : 'rbar-wr-red';
+    const avgSign  = mean >= 0 ? '+' : '';
+    const p25Fmt   = (p25 >= 0 ? '+' : '') + p25.toFixed(1) + '%';
+    const p75Fmt   = '+' + p75.toFixed(1) + '%';
     return `<div class="rbar-row">
   <div class="rbar-label">${p}</div>
   <div class="rbar-track-wrap">
@@ -642,90 +576,83 @@ function renderRangeBars(containerId, data, periods, keys, labels) {
     </div>
     <span class="rbar-p75">${p75Fmt}</span>
   </div>
-  <div class="rbar-meta">
-    <span class="rbar-avg">${labels.avg} ${avgSign}${mean.toFixed(1)}%</span>
-    &nbsp;·&nbsp;
-    <span class="${wrClass}">${wr.toFixed(0)}% ${labels.win}</span>
-  </div>
+  <div class="rbar-meta"><span class="rbar-avg">avg ${avgSign}${mean.toFixed(1)}%</span>&nbsp;·&nbsp;<span class="${wrClass}">${wr.toFixed(0)}% win</span></div>
 </div>`;
   }).join('');
 }
 
-// ── Signal & merged agent rendering ──────────────────────────────────────────
-function renderSignalAndAnalysis(agentData) {
-  const summary = agentData.summary || {};
-  const usAgent = agentData.us_agent || {};
-  const twAgent = agentData.tw_agent || {};
+// ── Agent section renderer ────────────────────────────────────────────────────
+function renderAgentSection(agentData, mktKey) {
+  const cfg      = MARKETS[mktKey];
+  const agent    = agentData[cfg.agentKey];
+  const summary  = agentData.summary || {};
+  const el       = document.getElementById('agent-content');
 
-  // Signal badge
+  if (!agent) {
+    el.innerHTML = `
+      <div class="signal-top">
+        <div class="signal-badge badge-hold">HOLD</div>
+        <div class="cross-market-text">Agent analysis coming soon for ${cfg.label} market.</div>
+      </div>
+      <div class="coming-soon">Automated analysis for ${cfg.labelLong} is not yet available. Check back after the next daily update.</div>`;
+    return;
+  }
+
   const raw     = summary.actionable_signal || summary.actionable_en || '';
   let sigWord   = 'HOLD';
   if (/BUY/i.test(raw))  sigWord = 'BUY';
   if (/SELL/i.test(raw)) sigWord = 'SELL';
 
-  const badge = document.getElementById('signal-badge');
-  badge.textContent = sigWord;
-  badge.className   = 'signal-badge';
-  badge.classList.add(sigWord === 'BUY' ? 'badge-buy' : sigWord === 'SELL' ? 'badge-sell' : 'badge-hold');
+  const narrative  = agent.narrative_en  || agent.narrative  || '';
+  const factors    = agent.key_factors_en || agent.key_factors || [];
+  const watchFor   = agent.watch_for_en  || agent.forward_outlook || agent.what_quant_misses || '';
+  const crossView  = summary.cross_market_view_en || summary.cross_market_view || '';
+  const outlook    = summary.forward_outlook_en || agent.forward_outlook || '';
+  const badgeCls   = sigWord === 'BUY' ? 'badge-buy' : sigWord === 'SELL' ? 'badge-sell' : 'badge-hold';
 
-  // Cross-market view
-  const crossView = summary.cross_market_view_en || summary.cross_market_view || '';
-  document.getElementById('cross-market-text').textContent = crossView;
+  const factorsHtml = factors.map(f => `<li>${f}</li>`).join('');
 
-  // US Analysis
-  const usNarrative = usAgent.narrative_en || usAgent.narrative || '';
-  document.getElementById('us-narrative').textContent = usNarrative;
-
-  const usFactorsEl = document.getElementById('us-factors');
-  usFactorsEl.innerHTML = '';
-  const usFactors = usAgent.key_factors_en || usAgent.key_factors || [];
-  usFactors.forEach(f => {
-    const li = document.createElement('li');
-    li.textContent = f;
-    usFactorsEl.appendChild(li);
-  });
-
-  const usWatchFor = usAgent.watch_for_en || usAgent.forward_outlook || usAgent.what_quant_misses || '';
-  document.getElementById('us-watch-for').textContent = usWatchFor;
-
-  // TW Analysis
-  const twNarrative = twAgent.narrative_en || twAgent.narrative || '';
-  document.getElementById('tw-narrative').textContent = twNarrative;
-
-  const twFactorsEl = document.getElementById('tw-factors');
-  twFactorsEl.innerHTML = '';
-  const twFactors = twAgent.key_factors_en || twAgent.key_factors || [];
-  twFactors.forEach(f => {
-    const li = document.createElement('li');
-    li.textContent = f;
-    twFactorsEl.appendChild(li);
-  });
-
-  const twWatchFor = twAgent.watch_for_en || twAgent.forward_outlook || twAgent.what_quant_misses || '';
-  document.getElementById('tw-watch-for').textContent = twWatchFor;
-
-  // Combined forward outlook
-  const outlook = summary.forward_outlook_en ||
-    [usAgent.forward_outlook, twAgent.forward_outlook].filter(Boolean).join(' | ') || raw;
-  document.getElementById('forward-outlook').textContent = outlook;
+  el.innerHTML = `
+    <div class="signal-top">
+      <div class="signal-badge ${badgeCls}">${sigWord}</div>
+      <div class="cross-market-text">${crossView}</div>
+    </div>
+    <hr class="agent-divider">
+    <div class="agent-section-label">${cfg.label} Analysis</div>
+    <div class="agent-narrative">${narrative}</div>
+    <ul class="agent-factors">${factorsHtml}</ul>
+    <div class="watch-for-label">Watch For</div>
+    <div class="watch-for-text">${watchFor}</div>
+    ${outlook ? `<div class="outlook-label">Forward Outlook</div><div class="outlook-text">${outlook}</div>` : ''}`;
 }
 
 // ── Quintile chart ────────────────────────────────────────────────────────────
-function buildQuintileChart(usReturns, twReturns) {
+let _quintileChart = null;
+
+function buildQuintileChart(returns, mktKey) {
+  const cfg = MARKETS[mktKey];
+  const section = document.getElementById('quintile-section');
+
+  if (!returns) { section.classList.add('hidden'); return; }
+  section.classList.remove('hidden');
+
   const labels = ['Q1\nExtreme Fear', 'Q2\nFear', 'Q3\nNeutral', 'Q4\nGreed', 'Q5\nEuphoria'];
   const ctx    = document.getElementById('quintileChart').getContext('2d');
-  new Chart(ctx, {
+
+  if (_quintileChart) { _quintileChart.destroy(); _quintileChart = null; }
+
+  const colors = ['#1f6335','#238636','#2ea043','#3fb950','#56d364'];
+  _quintileChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels,
-      datasets: [
-        { label: 'SPY 20d Avg Return (%)', data: usReturns,
-          backgroundColor: ['#1f6335','#238636','#2ea043','#3fb950','#56d364'],
-          borderRadius: 4, borderSkipped: false },
-        { label: 'TAIEX 20d Avg Return (%)', data: twReturns,
-          backgroundColor: ['#0d3a6e','#1158a6','#1a73c8','#2188ff','#58a6ff'],
-          borderRadius: 4, borderSkipped: false }
-      ]
+      datasets: [{
+        label: cfg.index + ' 20d Avg Return (%)',
+        data: returns,
+        backgroundColor: colors,
+        borderRadius: 4,
+        borderSkipped: false
+      }]
     },
     options: {
       responsive: true, maintainAspectRatio: true,
@@ -739,36 +666,54 @@ function buildQuintileChart(usReturns, twReturns) {
       }
     }
   });
+
+  const q1 = returns[0].toFixed(2);
+  const q5 = returns[4].toFixed(2);
+  document.getElementById('edge-text').textContent =
+    'In the Extreme Fear zone (bottom 20% of all readings), ' + cfg.index +
+    ' returns +' + q1 + '% avg over 20 days vs +' + q5 + '% from Extreme Greed. Fear is the better entry point.';
 }
 
-// ── Overlay chart (EN: US score + SPY) ───────────────────────────────────────
-let _overlayChart = null;
-let _overlayData  = null;
+// ── Hex color to rgba helper ──────────────────────────────────────────────────
+function hexToRgba(hex, alpha) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+// ── Overlay chart ─────────────────────────────────────────────────────────────
+let _overlayChart  = null;
+let _overlayData   = null;
 let _overlayScores = null;
+let _currentMkt    = 'us';
+let _currentRange  = 252;
 
 function dateFmtFn(n) {
-  if (n <= 90)  return d => {
-    const dt = new Date(d);
-    return dt.toLocaleDateString('en-US', { month: 'short', day: '2-digit' }).replace(' ', '-');
-  };
+  if (n <= 90)  return d => { const dt = new Date(d); return dt.toLocaleDateString('en-US', { month: 'short', day: '2-digit' }).replace(' ', '-'); };
   if (n <= 400) return d => d.substring(0, 7);
   return d => d.substring(0, 4);
 }
 
-function buildOverlayChart(overlayData, rangeDays) {
+function buildOverlayChart(overlayData, rangeDays, mktKey) {
   _overlayData  = overlayData;
-  const allDates  = overlayData.dates;
-  const allScores = overlayData.us_score;
+  _currentMkt   = mktKey;
+  _currentRange = rangeDays;
 
-  const spyMap = {};
-  (overlayData.spy_dates || overlayData.dates).forEach((d, i) => {
-    spyMap[d] = (overlayData.spy || overlayData.us_price || [])[i];
-  });
+  const cfg       = MARKETS[mktKey];
+  const allDates  = overlayData[cfg.scoreDates] || overlayData.dates || [];
+  const allScores = overlayData[cfg.scoreProp]  || [];
+
+  const priceMap = {};
+  const pdKey    = cfg.priceDates;
+  const pvKey    = cfg.prices;
+  (overlayData[pdKey] || []).forEach((d, i) => { priceMap[d] = (overlayData[pvKey] || [])[i]; });
 
   const n      = rangeDays > 0 ? Math.min(rangeDays, allDates.length) : allDates.length;
   const dates  = allDates.slice(-n);
   const scores = allScores.slice(-n);
-  const prices = dates.map(d => spyMap[d] !== undefined ? spyMap[d] : null);
+  const prices = dates.map(d => priceMap[d] !== undefined ? priceMap[d] : null);
   _overlayScores = scores;
 
   if (_overlayChart) { _overlayChart.destroy(); _overlayChart = null; }
@@ -781,53 +726,35 @@ function buildOverlayChart(overlayData, rangeDays) {
       const ds0   = chart.data.datasets[0];
       const meta0 = chart.getDatasetMeta(0);
       let lastIdx = -1;
-      for (let i = ds0.data.length - 1; i >= 0; i--) {
-        if (ds0.data[i] != null) { lastIdx = i; break; }
-      }
+      for (let i = ds0.data.length - 1; i >= 0; i--) { if (ds0.data[i] != null) { lastIdx = i; break; } }
       if (lastIdx < 0) return;
       const pt  = meta0.data[lastIdx];
       const c   = chart.ctx;
       const clr = ZONE_TEXT_COLORS[getZoneIndex(_overlayScores[lastIdx])];
       c.save();
-      c.beginPath();
-      c.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
-      c.fillStyle = clr;
-      c.fill();
+      c.beginPath(); c.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+      c.fillStyle = clr; c.fill();
       c.strokeStyle = '#fff'; c.lineWidth = 1.5; c.stroke();
-      c.fillStyle = '#fff';
-      c.font = 'bold 9px sans-serif';
-      c.textAlign = 'right';
+      c.fillStyle = '#fff'; c.font = 'bold 9px sans-serif'; c.textAlign = 'right';
       c.fillText('NOW', pt.x - 7, pt.y - 6);
       c.restore();
     }
   };
 
+  const mcol = cfg.color;
   _overlayChart = new Chart(ctx, {
     type: 'line',
     plugins: [nowDotPlugin],
     data: {
       labels: dates,
       datasets: [
-        {
-          label: 'US Sentiment Score',
-          data: scores,
-          yAxisID: 'y-score',
-          borderColor: '#58a6ff',
-          backgroundColor: 'transparent',
-          borderWidth: 2.5,
-          pointRadius: n <= 63 ? 2 : 0,
-          tension: 0.2, order: 1, z: 10
-        },
-        {
-          label: 'SPY Price',
-          data: prices,
-          yAxisID: 'y-price',
-          borderColor: 'rgba(88,166,255,0.25)',
-          backgroundColor: 'rgba(88,166,255,0.07)',
-          borderWidth: 1,
-          pointRadius: 0,
-          fill: true, tension: 0.2, order: 2
-        }
+        { label: cfg.label + ' Sentiment Score', data: scores, yAxisID: 'y-score',
+          borderColor: mcol, backgroundColor: 'transparent',
+          borderWidth: 2.5, pointRadius: n <= 63 ? 2 : 0, tension: 0.2, order: 1, z: 10 },
+        { label: cfg.index + ' Price', data: prices, yAxisID: 'y-price',
+          borderColor: hexToRgba(mcol, 0.25),
+          backgroundColor: hexToRgba(mcol, 0.07),
+          borderWidth: 1, pointRadius: 0, fill: true, tension: 0.2, order: 2 }
       ]
     },
     options: {
@@ -837,43 +764,24 @@ function buildOverlayChart(overlayData, rangeDays) {
         legend: { labels: { color: '#8b949e', font: { size: 10 }, boxWidth: 10 } },
         tooltip: { callbacks: {
           title: items => items[0].label,
-          label: c => c.datasetIndex === 0
-            ? ' Score: ' + c.parsed.y?.toFixed(1)
-            : ' SPY: $' + c.parsed.y?.toFixed(2)
+          label: c => c.datasetIndex === 0 ? ' Score: ' + c.parsed.y?.toFixed(1) : ' ' + cfg.index + ': ' + c.parsed.y?.toFixed(1)
         }}
       },
       scales: {
-        x: {
-          ticks: { color: '#8b949e', font: { size: 9 }, maxTicksLimit: 8,
-                   callback: (v, i) => fmtDate(dates[i] || ''), maxRotation: 0 },
-          grid: { color: '#21262d' }
-        },
-        'y-score': {
-          type: 'linear', position: 'left', min: 0, max: 100,
-          ticks: { color: '#58a6ff', font: { size: 10 }, stepSize: 20 },
-          grid: { color: '#21262d' },
-          title: { display: true, text: 'Score', color: '#58a6ff', font: { size: 10 } }
-        },
-        'y-price': {
-          type: 'linear', position: 'right',
-          ticks: { color: '#8b949e', font: { size: 10 }, callback: v => '$' + v.toFixed(0) },
+        x: { ticks: { color: '#8b949e', font: { size: 9 }, maxTicksLimit: 8, callback: (v, i) => fmtDate(dates[i] || ''), maxRotation: 0 }, grid: { color: '#21262d' } },
+        'y-score': { type: 'linear', position: 'left', min: 0, max: 100,
+          ticks: { color: mcol, font: { size: 10 }, stepSize: 20 }, grid: { color: '#21262d' },
+          title: { display: true, text: 'Score', color: mcol, font: { size: 10 } } },
+        'y-price': { type: 'linear', position: 'right',
+          ticks: { color: '#8b949e', font: { size: 10 }, callback: v => v.toFixed(0) },
           grid: { drawOnChartArea: false },
-          title: { display: true, text: 'SPY', color: '#8b949e', font: { size: 10 } }
-        }
+          title: { display: true, text: cfg.index, color: '#8b949e', font: { size: 10 } } }
       }
     }
   });
 }
 
-document.querySelectorAll('.range-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    if (_overlayData) buildOverlayChart(_overlayData, parseInt(btn.dataset.days));
-  });
-});
-
-// ── Market data ───────────────────────────────────────────────────────────────
+// ── Market data (static, US/TW focused) ──────────────────────────────────────
 function renderMarketData(snap) {
   const us  = snap.us_market || {};
   const tw  = snap.tw_market || {};
@@ -910,6 +818,66 @@ function renderMarketData(snap) {
   document.getElementById('mkt-foreign-sub').textContent = days + 'd ' + dir;
 }
 
+// ── Switch market ─────────────────────────────────────────────────────────────
+let _allData = null;
+
+function switchMarket(mktKey) {
+  if (!_allData) return;
+  const { fwdData, agentData, quintileData, overlayData, zoneReturns } = _allData;
+  const cfg = MARKETS[mktKey];
+
+  // Update buttons
+  document.querySelectorAll('.market-btn').forEach(b => {
+    const active = b.dataset.market === mktKey;
+    b.classList.toggle('active', active);
+    b.style.background    = active ? cfg.color : '';
+    b.style.borderColor   = active ? cfg.color : '';
+    b.style.setProperty('--market-color', cfg.color);
+  });
+
+  // Score
+  const score  = fwdData[cfg.scoreKey];
+  const pctile = quintileData[mktKey + '_percentile'];
+  renderThermometer(score, pctile, zoneReturns, mktKey);
+
+  // Forward returns
+  document.getElementById('fwd-ticker').textContent = cfg.fwdTicker;
+  const fwdBlock = fwdData[cfg.fwdKey];
+  const periods  = ['5 Days', '10 Days', '20 Days', '60 Days'];
+  const keys     = [cfg.fwdPrefix + '5d', cfg.fwdPrefix + '10d', cfg.fwdPrefix + '20d', cfg.fwdPrefix + '60d'];
+  renderRangeBars('mkt-returns', fwdBlock, periods, keys);
+  const nKey = cfg.fwdPrefix + '20d';
+  document.getElementById('mkt-returns-n').textContent =
+    fwdBlock && fwdBlock[nKey] ? (fwdBlock[nKey].n || '--') + ' similar days in history' : '';
+
+  // Overlay chart (keep current range)
+  buildOverlayChart(overlayData, _currentRange, mktKey);
+
+  // Agent
+  renderAgentSection(agentData, mktKey);
+
+  // Quintile
+  const qData = quintileData[mktKey] && quintileData[mktKey]['20d'] ? quintileData[mktKey]['20d'].returns : null;
+  buildQuintileChart(qData, mktKey);
+}
+
+// ── Range buttons ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.range-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    _currentRange = parseInt(btn.dataset.days);
+    if (_overlayData) buildOverlayChart(_overlayData, _currentRange, _currentMkt);
+  });
+});
+
+// ── Market selector buttons ───────────────────────────────────────────────────
+document.querySelectorAll('.market-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchMarket(btn.dataset.market);
+  });
+});
+
 // ── Main load ─────────────────────────────────────────────────────────────────
 async function loadDashboard() {
   try {
@@ -922,46 +890,17 @@ async function loadDashboard() {
       fetch('data/zone_returns.json').then(r => r.json()),
     ]);
 
+    _allData = { fwdData, agentData, quintileData, overlayData, zoneReturns };
+
     const date = agentData.date || dashData.snapshot?.date || '--';
     document.getElementById('header-date').textContent = 'As of ' + date;
     document.getElementById('footer-date').textContent = date;
 
-    // 1. Thermometers (with zone expected return)
-    renderThermometer('us', fwdData.us_current_score, quintileData.us_percentile, zoneReturns, 'us');
-    renderThermometer('tw', fwdData.tw_current_score, quintileData.tw_percentile, zoneReturns, 'tw');
-
-    // 2. Forward returns
-    renderRangeBars('spy-returns', fwdData.us_forward,
-      ['5 Days','10 Days','20 Days','60 Days'],
-      ['spy_fwd_5d','spy_fwd_10d','spy_fwd_20d','spy_fwd_60d'],
-      { avg: 'avg', win: 'win' });
-    document.getElementById('spy-n').textContent =
-      (fwdData.us_forward.spy_fwd_20d.n || '--') + ' similar days in history';
-
-    renderRangeBars('taiex-returns', fwdData.tw_forward,
-      ['5 Days','10 Days','20 Days','60 Days'],
-      ['taiex_fwd_5d','taiex_fwd_10d','taiex_fwd_20d','taiex_fwd_60d'],
-      { avg: 'avg', win: 'win' });
-    document.getElementById('taiex-n').textContent =
-      (fwdData.tw_forward.taiex_fwd_20d.n || '--') + ' similar days in history';
-
-    // 3. Signal & analysis (merged)
-    renderSignalAndAnalysis(agentData);
-
-    // 4. Overlay chart — default 1Y (no bgZones)
-    buildOverlayChart(overlayData, 252);
-
-    // 5. Historical proof
-    buildQuintileChart(quintileData.us['20d'].returns, quintileData.tw['20d'].returns);
-    const q1 = quintileData.us['20d'].returns[0].toFixed(2);
-    const q5 = quintileData.us['20d'].returns[4].toFixed(2);
-    document.getElementById('edge-text').textContent =
-      'You are here: Extreme Fear zone (bottom 20% of all readings). ' +
-      'Historically, SPY returns +' + q1 + '% avg over 20 days from this zone vs +' + q5 + '% from Extreme Greed. ' +
-      'Fear is the better entry point.';
-
-    // 6. Market data
+    // Market data (always shown, US/TW focused)
     renderMarketData(dashData.snapshot);
+
+    // Default: US
+    switchMarket('us');
 
   } catch (err) {
     console.error(err);
