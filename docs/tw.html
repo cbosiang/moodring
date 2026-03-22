@@ -746,7 +746,14 @@ function buildOverlayChart(overlayData, rangeDays, mktKey) {
         legend: { labels: { color: '#8b949e', font: { size: 10 }, boxWidth: 10 } },
         tooltip: { callbacks: {
           title: items => items[0].label,
-          label: c => c.datasetIndex === 0 ? ' 分數: ' + c.parsed.y?.toFixed(1) : ' ' + cfg.index + ': ' + c.parsed.y?.toFixed(0)
+          label: c => {
+            const v = c.parsed.y;
+            if (c.datasetIndex === 0) {
+              return ' 情緒分數: ' + (v != null ? v.toFixed(1) : '--');
+            } else {
+              return ' ' + cfg.index + ': ' + (v != null ? Math.round(v).toLocaleString() : '--');
+            }
+          }
         }}
       },
       scales: {
