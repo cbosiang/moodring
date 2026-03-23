@@ -47,6 +47,7 @@ def finmind_with_retry(fn, *args, max_retries=3, backoff=10, **kwargs):
 
 def yf_download_with_retry(ticker, max_retries=3, **kwargs):
     """Wrap yf.download() with exponential backoff (5s, 10s, 20s) on transient errors."""
+    import yfinance as yf
     delays = [5, 10, 20]
     for attempt in range(max_retries):
         try:
