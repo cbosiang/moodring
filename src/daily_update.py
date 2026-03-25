@@ -1221,7 +1221,8 @@ def generate_key_factors_tw(mkt_data, mkt_name, retail=None, score=None, global_
             if fw is not None and consec > 0:
                 dir_zh = "買超" if direction == 'buy' else "賣超"
                 risk_zh = "外資賣壓持續" if direction == 'sell' else "外資回流訊號"
-                factors.append(f"外資{dir_zh} {abs(fw):.1f}億，連{direction} {consec}日 — {risk_zh}")
+                dir_action = "買" if direction == 'buy' else "賣"
+                factors.append(f"外資{dir_zh} {abs(fw):.1f}億，連{dir_action} {consec}日 — {risk_zh}")
             if retail_net is not None:
                 action = "散戶逆勢接刀" if retail_net > 0 else "散戶跟空"
                 dir_zh = "買超" if retail_net > 0 else "賣超"
