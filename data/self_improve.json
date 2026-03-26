@@ -2,10 +2,10 @@
   "date": "2026-03-26",
   "markets": {
     "us": {
-      "full_ic_20d": -0.1694,
-      "recent_ic_20d": -0.0223,
+      "full_ic_20d": -0.1689,
+      "recent_ic_20d": -0.0176,
       "ic_trend": "decaying",
-      "ic_change_pct": -86.8,
+      "ic_change_pct": -89.6,
       "score_mean_60d": 43.1,
       "score_std_60d": 4.5,
       "zone_distribution_60d": {
@@ -17,8 +17,8 @@
       },
       "health": "poor",
       "flags": [
-        "IC decaying: recent -0.0223 vs historical -0.1694",
-        "Weak IC: -0.0223"
+        "IC decaying: recent -0.0176 vs historical -0.1689",
+        "Weak IC: -0.0176"
       ],
       "calibration_stale": false,
       "calibration_days_ago": 1
@@ -109,8 +109,8 @@
   "system_health": {
     "overall": "poor",
     "active_flags": [
-      "US: IC decaying: recent -0.0223 vs historical -0.1694",
-      "US: Weak IC: -0.0223",
+      "US: IC decaying: recent -0.0176 vs historical -0.1689",
+      "US: Weak IC: -0.0176",
       "TW: IC decaying: recent 0.0234 vs historical -0.1254",
       "TW: Weak IC: 0.0234",
       "JP: Weak IC: -0.0633",
