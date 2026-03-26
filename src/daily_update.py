@@ -2581,6 +2581,7 @@ def main():
                               jp_data, kr_data, eu_data)
     update_dashboard_json(snapshot, jp_score_val, kr_score_val, eu_score_val)
     update_overlay_json(snapshot, jp_score_val, kr_score_val, eu_score_val,
+                        us_score=us_score_val, tw_score=tw_score_val,
                         us_open=us_open, tw_open=tw_open, jp_open=jp_open,
                         kr_open=kr_open, eu_open=eu_open)
     update_agent_results(snapshot, us_data, tw_data, tw_retail, jp_data, kr_data, eu_data, global_ctx,
