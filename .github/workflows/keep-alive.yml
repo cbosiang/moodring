@@ -1,0 +1,20 @@
+name: Keep Alive
+
+on:
+  schedule:
+    - cron: '0 0 1,15 * *'  # 每月 1 號和 15 號跑一次
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: gautamkrishnar/keepalive-workflow@v2
+        with:
+          time_elapsed: '45'
