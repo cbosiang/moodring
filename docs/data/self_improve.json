@@ -1,13 +1,13 @@
 {
-  "date": "2026-04-02",
+  "date": "2026-04-03",
   "markets": {
     "us": {
       "full_ic_20d": -0.1662,
-      "recent_ic_20d": -0.0107,
+      "recent_ic_20d": 0.0023,
       "ic_trend": "decaying",
-      "ic_change_pct": -93.6,
-      "score_mean_60d": 42.6,
-      "score_std_60d": 4.9,
+      "ic_change_pct": -98.6,
+      "score_mean_60d": 42.7,
+      "score_std_60d": 5.1,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 20,
@@ -17,24 +17,24 @@
       },
       "health": "poor",
       "flags": [
-        "IC decaying: recent -0.0107 vs historical -0.1662",
-        "Weak IC: -0.0107"
+        "IC decaying: recent 0.0023 vs historical -0.1662",
+        "Weak IC: 0.0023"
       ],
       "calibration_stale": false,
-      "calibration_days_ago": 8
+      "calibration_days_ago": 9
     },
     "tw": {
       "full_ic_20d": -0.1238,
       "recent_ic_20d": 0.0058,
       "ic_trend": "decaying",
       "ic_change_pct": -95.3,
-      "score_mean_60d": 46.5,
-      "score_std_60d": 10.6,
+      "score_mean_60d": 46.7,
+      "score_std_60d": 10.9,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 21,
-        "neutral": 32,
-        "greed": 7,
+        "neutral": 31,
+        "greed": 8,
         "extreme_greed": 0
       },
       "health": "poor",
@@ -43,14 +43,14 @@
         "Weak IC: 0.0058"
       ],
       "calibration_stale": false,
-      "calibration_days_ago": 8
+      "calibration_days_ago": 9
     },
     "jp": {
-      "full_ic_20d": -0.0661,
-      "recent_ic_20d": -0.1028,
+      "full_ic_20d": -0.0657,
+      "recent_ic_20d": -0.1042,
       "ic_trend": "improving",
-      "ic_change_pct": 55.5,
-      "score_mean_60d": 48.2,
+      "ic_change_pct": 58.6,
+      "score_mean_60d": 48.3,
       "score_std_60d": 9.5,
       "zone_distribution_60d": {
         "extreme_fear": 1,
@@ -62,34 +62,34 @@
       "health": "warning",
       "flags": [],
       "calibration_stale": false,
-      "calibration_days_ago": 8
+      "calibration_days_ago": 9
     },
     "kr": {
-      "full_ic_20d": -0.1077,
-      "recent_ic_20d": -0.2605,
+      "full_ic_20d": -0.1075,
+      "recent_ic_20d": -0.2617,
       "ic_trend": "improving",
-      "ic_change_pct": 141.9,
-      "score_mean_60d": 55.8,
-      "score_std_60d": 13.9,
+      "ic_change_pct": 143.4,
+      "score_mean_60d": 55.5,
+      "score_std_60d": 14.0,
       "zone_distribution_60d": {
         "extreme_fear": 2,
-        "fear": 8,
+        "fear": 9,
         "neutral": 15,
-        "greed": 34,
+        "greed": 33,
         "extreme_greed": 1
       },
       "health": "good",
       "flags": [],
       "calibration_stale": false,
-      "calibration_days_ago": 8
+      "calibration_days_ago": 9
     },
     "eu": {
       "full_ic_20d": -0.0564,
-      "recent_ic_20d": -0.4974,
+      "recent_ic_20d": -0.5037,
       "ic_trend": "improving",
-      "ic_change_pct": 781.9,
-      "score_mean_60d": 43.8,
-      "score_std_60d": 7.2,
+      "ic_change_pct": 793.1,
+      "score_mean_60d": 43.9,
+      "score_std_60d": 7.4,
       "zone_distribution_60d": {
         "extreme_fear": 1,
         "fear": 16,
@@ -100,14 +100,14 @@
       "health": "good",
       "flags": [],
       "calibration_stale": false,
-      "calibration_days_ago": 8
+      "calibration_days_ago": 9
     }
   },
   "system_health": {
     "overall": "poor",
     "active_flags": [
-      "US: IC decaying: recent -0.0107 vs historical -0.1662",
-      "US: Weak IC: -0.0107",
+      "US: IC decaying: recent 0.0023 vs historical -0.1662",
+      "US: Weak IC: 0.0023",
       "TW: IC decaying: recent 0.0058 vs historical -0.1238",
       "TW: Weak IC: 0.0058"
     ],
