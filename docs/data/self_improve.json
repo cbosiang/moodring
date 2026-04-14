@@ -2,12 +2,12 @@
   "date": "2026-04-14",
   "markets": {
     "us": {
-      "full_ic_20d": -0.1643,
-      "recent_ic_20d": 0.122,
+      "full_ic_20d": -0.1647,
+      "recent_ic_20d": 0.1101,
       "ic_trend": "decaying",
-      "ic_change_pct": -25.7,
-      "score_mean_60d": 45.4,
-      "score_std_60d": 10.5,
+      "ic_change_pct": -33.2,
+      "score_mean_60d": 45.6,
+      "score_std_60d": 11.0,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 20,
@@ -17,7 +17,7 @@
       },
       "health": "warning",
       "flags": [
-        "IC decaying: recent 0.122 vs historical -0.1643"
+        "IC decaying: recent 0.1101 vs historical -0.1647"
       ],
       "calibration_stale": false,
       "calibration_days_ago": 20
@@ -45,10 +45,10 @@
       "calibration_days_ago": 20
     },
     "jp": {
-      "full_ic_20d": -0.0663,
-      "recent_ic_20d": -0.1033,
+      "full_ic_20d": -0.066,
+      "recent_ic_20d": -0.1013,
       "ic_trend": "improving",
-      "ic_change_pct": 55.8,
+      "ic_change_pct": 53.5,
       "score_mean_60d": 51.2,
       "score_std_60d": 14.3,
       "zone_distribution_60d": {
@@ -64,10 +64,10 @@
       "calibration_days_ago": 20
     },
     "kr": {
-      "full_ic_20d": -0.1082,
-      "recent_ic_20d": -0.3154,
+      "full_ic_20d": -0.108,
+      "recent_ic_20d": -0.3184,
       "ic_trend": "improving",
-      "ic_change_pct": 191.5,
+      "ic_change_pct": 194.8,
       "score_mean_60d": 55.5,
       "score_std_60d": 14.5,
       "zone_distribution_60d": {
@@ -83,12 +83,12 @@
       "calibration_days_ago": 20
     },
     "eu": {
-      "full_ic_20d": -0.0569,
-      "recent_ic_20d": -0.4541,
+      "full_ic_20d": -0.0573,
+      "recent_ic_20d": -0.4588,
       "ic_trend": "improving",
-      "ic_change_pct": 698.1,
+      "ic_change_pct": 700.7,
       "score_mean_60d": 46.6,
-      "score_std_60d": 11.3,
+      "score_std_60d": 11.4,
       "zone_distribution_60d": {
         "extreme_fear": 1,
         "fear": 16,
@@ -105,7 +105,7 @@
   "system_health": {
     "overall": "poor",
     "active_flags": [
-      "US: IC decaying: recent 0.122 vs historical -0.1643",
+      "US: IC decaying: recent 0.1101 vs historical -0.1647",
       "TW: IC decaying: recent 0.0692 vs historical -0.1257",
       "TW: Weak IC: 0.0692"
     ],
