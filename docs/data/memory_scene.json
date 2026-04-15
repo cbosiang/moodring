@@ -1,39 +1,12 @@
 {
-  "date": "2026-04-14",
+  "date": "2026-04-15",
   "kr": {
-    "current_score": 76.9,
+    "current_score": 76.0,
     "analogues": [
-      {
-        "date": "2017-05-11",
-        "score": 77.0,
-        "distance": 0.1,
-        "fwd_5d": -0.42,
-        "fwd_10d": 2.03,
-        "fwd_20d": 3.72,
-        "context": "Score near 52w high, 5d rally of +4.1%, 20d move +6.7%"
-      },
-      {
-        "date": "2017-05-08",
-        "score": 77.6,
-        "distance": 0.7,
-        "fwd_5d": 0.11,
-        "fwd_10d": 0.83,
-        "fwd_20d": 2.94,
-        "context": "Score near 52w high, 5d rally of +3.8%, 20d move +6.1%"
-      },
-      {
-        "date": "2026-03-18",
-        "score": 78.0,
-        "distance": 1.1,
-        "fwd_5d": -6.82,
-        "fwd_10d": -7.53,
-        "fwd_20d": null,
-        "context": "Score near 52w high, Sharp 5d rally of +5.6%, 20d move +7.3%"
-      },
       {
         "date": "2017-05-12",
         "score": 75.5,
-        "distance": 1.4,
+        "distance": 0.5,
         "fwd_5d": 0.11,
         "fwd_10d": 3.03,
         "fwd_20d": 3.14,
@@ -42,19 +15,46 @@
       {
         "date": "2017-05-15",
         "score": 75.0,
-        "distance": 1.9,
+        "distance": 1.0,
         "fwd_5d": 0.58,
         "fwd_10d": 2.72,
         "fwd_20d": 3.67,
         "context": "Score near 52w high, 20d move +7.9%"
+      },
+      {
+        "date": "2017-05-11",
+        "score": 77.0,
+        "distance": 1.0,
+        "fwd_5d": -0.42,
+        "fwd_10d": 2.03,
+        "fwd_20d": 3.72,
+        "context": "Score near 52w high, 5d rally of +4.1%, 20d move +6.7%"
+      },
+      {
+        "date": "2017-05-26",
+        "score": 74.9,
+        "distance": 1.1,
+        "fwd_5d": 0.7,
+        "fwd_10d": 0.11,
+        "fwd_20d": 1.42,
+        "context": "Score near 52w high, 20d move +8.4%"
+      },
+      {
+        "date": "2017-05-16",
+        "score": 74.8,
+        "distance": 1.2,
+        "fwd_5d": 0.71,
+        "fwd_10d": 2.11,
+        "fwd_20d": 3.37,
+        "context": "Score near 52w high, 20d move +7.8%"
       }
     ],
     "summary": {
-      "n_similar": 15,
-      "avg_fwd_20d": 4.71,
-      "win_rate_20d": 93.0,
+      "n_similar": 21,
+      "avg_fwd_20d": 3.7,
+      "win_rate_20d": 85.0,
       "best_analogue": "2009-04-08",
-      "worst_analogue": "2015-04-23"
+      "worst_analogue": "2013-01-02"
     }
   },
   "eu": {
