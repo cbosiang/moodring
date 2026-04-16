@@ -40,60 +40,60 @@
     }
   },
   "eu": {
-    "current_score": 76.9,
+    "current_score": 75.2,
     "analogues": [
       {
-        "date": "2013-01-03",
-        "score": 76.8,
+        "date": "2013-01-14",
+        "score": 75.3,
         "distance": 0.1,
-        "fwd_5d": 0.26,
-        "fwd_10d": 0.66,
-        "fwd_20d": 0.07,
-        "context": "Score near 52w high, 20d move +6.1%"
+        "fwd_5d": 0.42,
+        "fwd_10d": 1.08,
+        "fwd_20d": -3.41,
+        "context": "Score near 52w high"
       },
       {
-        "date": "2013-01-07",
-        "score": 76.6,
+        "date": "2013-01-10",
+        "score": 75.5,
         "distance": 0.3,
-        "fwd_5d": 0.73,
-        "fwd_10d": 1.15,
-        "fwd_20d": -2.61,
+        "fwd_5d": 0.39,
+        "fwd_10d": 0.54,
+        "fwd_20d": -4.07,
         "context": "Score near 52w high"
       },
       {
-        "date": "2013-01-04",
-        "score": 77.5,
-        "distance": 0.6,
-        "fwd_5d": 0.31,
-        "fwd_10d": 0.01,
-        "fwd_20d": 0.03,
-        "context": "Score near 52w high"
-      },
-      {
-        "date": "2013-01-11",
-        "score": 75.9,
-        "distance": 1.0,
-        "fwd_5d": -0.3,
-        "fwd_10d": 0.97,
-        "fwd_20d": -3.22,
+        "date": "2013-01-08",
+        "score": 75.6,
+        "distance": 0.4,
+        "fwd_5d": 0.38,
+        "fwd_10d": 0.94,
+        "fwd_20d": -1.5,
         "context": "Score near 52w high"
       },
       {
         "date": "2013-01-09",
         "score": 75.8,
-        "distance": 1.1,
+        "distance": 0.6,
         "fwd_5d": -0.14,
         "fwd_10d": 0.07,
         "fwd_20d": -3.29,
         "context": "Score near 52w high, 5d rally of +3.0%"
+      },
+      {
+        "date": "2013-01-11",
+        "score": 75.9,
+        "distance": 0.7,
+        "fwd_5d": -0.3,
+        "fwd_10d": 0.97,
+        "fwd_20d": -3.22,
+        "context": "Score near 52w high"
       }
     ],
     "summary": {
-      "n_similar": 8,
-      "avg_fwd_20d": -2.25,
-      "win_rate_20d": 25.0,
-      "best_analogue": "2013-01-03",
-      "worst_analogue": "2013-01-10"
+      "n_similar": 30,
+      "avg_fwd_20d": -1.49,
+      "win_rate_20d": 38.0,
+      "best_analogue": "2009-04-09",
+      "worst_analogue": "2013-01-29"
     }
   },
   "cross_market": {
