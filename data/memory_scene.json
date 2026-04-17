@@ -1,12 +1,12 @@
 {
   "date": "2026-04-17",
   "tw": {
-    "current_score": 88.9,
+    "current_score": 88.8,
     "analogues": [
       {
         "date": "2026-04-08",
         "score": 86.5,
-        "distance": 2.4,
+        "distance": 2.3,
         "fwd_5d": 5.64,
         "fwd_10d": null,
         "fwd_20d": null,
@@ -22,12 +22,12 @@
     }
   },
   "kr": {
-    "current_score": 81.5,
+    "current_score": 81.6,
     "analogues": [
       {
         "date": "2009-04-09",
         "score": 82.2,
-        "distance": 0.7,
+        "distance": 0.6,
         "fwd_5d": 1.55,
         "fwd_10d": 3.98,
         "fwd_20d": 7.51,
@@ -36,7 +36,7 @@
       {
         "date": "2009-04-10",
         "score": 82.3,
-        "distance": 0.8,
+        "distance": 0.7,
         "fwd_5d": -0.53,
         "fwd_10d": 1.35,
         "fwd_20d": 5.05,
@@ -49,63 +49,6 @@
       "win_rate_20d": 100.0,
       "best_analogue": "2009-04-09",
       "worst_analogue": "2009-04-10"
-    }
-  },
-  "eu": {
-    "current_score": 75.2,
-    "analogues": [
-      {
-        "date": "2026-04-10",
-        "score": 75.1,
-        "distance": 0.1,
-        "fwd_5d": null,
-        "fwd_10d": null,
-        "fwd_20d": null,
-        "context": "Score near 52w high, 5d rally of +4.0%"
-      },
-      {
-        "date": "2013-01-14",
-        "score": 75.3,
-        "distance": 0.1,
-        "fwd_5d": 0.42,
-        "fwd_10d": 1.08,
-        "fwd_20d": -3.41,
-        "context": "Score near 52w high"
-      },
-      {
-        "date": "2013-01-10",
-        "score": 75.5,
-        "distance": 0.3,
-        "fwd_5d": 0.39,
-        "fwd_10d": 0.54,
-        "fwd_20d": -4.07,
-        "context": "Score near 52w high"
-      },
-      {
-        "date": "2013-01-08",
-        "score": 75.6,
-        "distance": 0.4,
-        "fwd_5d": 0.38,
-        "fwd_10d": 0.94,
-        "fwd_20d": -1.5,
-        "context": "Score near 52w high"
-      },
-      {
-        "date": "2013-01-09",
-        "score": 75.8,
-        "distance": 0.6,
-        "fwd_5d": -0.14,
-        "fwd_10d": 0.07,
-        "fwd_20d": -3.29,
-        "context": "Score near 52w high, 5d rally of +3.0%"
-      }
-    ],
-    "summary": {
-      "n_similar": 31,
-      "avg_fwd_20d": -1.49,
-      "win_rate_20d": 38.0,
-      "best_analogue": "2009-04-09",
-      "worst_analogue": "2013-01-29"
     }
   },
   "cross_market": {
