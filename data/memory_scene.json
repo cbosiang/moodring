@@ -1,12 +1,33 @@
 {
-  "date": "2026-04-16",
+  "date": "2026-04-17",
+  "tw": {
+    "current_score": 88.9,
+    "analogues": [
+      {
+        "date": "2026-04-08",
+        "score": 86.5,
+        "distance": 2.4,
+        "fwd_5d": 5.64,
+        "fwd_10d": null,
+        "fwd_20d": null,
+        "context": "Score near 52w high, Sharp 5d rally of +6.9%, 20d move +8.3%"
+      }
+    ],
+    "summary": {
+      "n_similar": 1,
+      "avg_fwd_20d": null,
+      "win_rate_20d": null,
+      "best_analogue": null,
+      "worst_analogue": null
+    }
+  },
   "kr": {
-    "current_score": 80.8,
+    "current_score": 81.5,
     "analogues": [
       {
         "date": "2009-04-09",
         "score": 82.2,
-        "distance": 1.4,
+        "distance": 0.7,
         "fwd_5d": 1.55,
         "fwd_10d": 3.98,
         "fwd_20d": 7.51,
@@ -15,24 +36,15 @@
       {
         "date": "2009-04-10",
         "score": 82.3,
-        "distance": 1.5,
+        "distance": 0.8,
         "fwd_5d": -0.53,
         "fwd_10d": 1.35,
         "fwd_20d": 5.05,
         "context": "5d rally of +4.1%, 20d move +18.7%"
-      },
-      {
-        "date": "2026-03-18",
-        "score": 78.0,
-        "distance": 2.8,
-        "fwd_5d": -6.82,
-        "fwd_10d": -7.53,
-        "fwd_20d": null,
-        "context": "Score near 52w high, Sharp 5d rally of +5.6%, 20d move +7.3%"
       }
     ],
     "summary": {
-      "n_similar": 3,
+      "n_similar": 2,
       "avg_fwd_20d": 6.28,
       "win_rate_20d": 100.0,
       "best_analogue": "2009-04-09",
@@ -42,6 +54,15 @@
   "eu": {
     "current_score": 75.2,
     "analogues": [
+      {
+        "date": "2026-04-10",
+        "score": 75.1,
+        "distance": 0.1,
+        "fwd_5d": null,
+        "fwd_10d": null,
+        "fwd_20d": null,
+        "context": "Score near 52w high, 5d rally of +4.0%"
+      },
       {
         "date": "2013-01-14",
         "score": 75.3,
@@ -77,19 +98,10 @@
         "fwd_10d": 0.07,
         "fwd_20d": -3.29,
         "context": "Score near 52w high, 5d rally of +3.0%"
-      },
-      {
-        "date": "2013-01-11",
-        "score": 75.9,
-        "distance": 0.7,
-        "fwd_5d": -0.3,
-        "fwd_10d": 0.97,
-        "fwd_20d": -3.22,
-        "context": "Score near 52w high"
       }
     ],
     "summary": {
-      "n_similar": 30,
+      "n_similar": 31,
       "avg_fwd_20d": -1.49,
       "win_rate_20d": 38.0,
       "best_analogue": "2009-04-09",
