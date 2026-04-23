@@ -1,5 +1,47 @@
 {
-  "date": "2026-04-22",
+  "date": "2026-04-23",
+  "us": {
+    "current_score": 93.9,
+    "analogues": [
+      {
+        "date": "2026-04-16",
+        "score": 91.0,
+        "distance": 2.9,
+        "fwd_5d": null,
+        "fwd_10d": null,
+        "fwd_20d": null,
+        "context": "Score near 52w high, 5d rally of +3.8%"
+      }
+    ],
+    "summary": {
+      "n_similar": 1,
+      "avg_fwd_20d": null,
+      "win_rate_20d": null,
+      "best_analogue": null,
+      "worst_analogue": null
+    }
+  },
+  "jp": {
+    "current_score": 92.2,
+    "analogues": [
+      {
+        "date": "2026-04-15",
+        "score": 89.2,
+        "distance": 3.0,
+        "fwd_5d": null,
+        "fwd_10d": null,
+        "fwd_20d": null,
+        "context": "Score near 52w high"
+      }
+    ],
+    "summary": {
+      "n_similar": 1,
+      "avg_fwd_20d": null,
+      "win_rate_20d": null,
+      "best_analogue": null,
+      "worst_analogue": null
+    }
+  },
   "eu": {
     "current_score": 78.9,
     "analogues": [
