@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-28",
+  "date": "2026-04-29",
   "us": {
     "current_score": 90.9,
     "analogues": [
@@ -29,10 +29,40 @@
         "fwd_10d": null,
         "fwd_20d": null,
         "context": "Score near 52w high, 5d rally of +3.9%, 20d move +6.8%"
+      },
+      {
+        "date": "2026-04-22",
+        "score": 93.9,
+        "distance": 3.0,
+        "fwd_5d": null,
+        "fwd_10d": null,
+        "fwd_20d": null,
+        "context": "Score near 52w high, 20d move +9.5%"
       }
     ],
     "summary": {
-      "n_similar": 3,
+      "n_similar": 4,
+      "avg_fwd_20d": null,
+      "win_rate_20d": null,
+      "best_analogue": null,
+      "worst_analogue": null
+    }
+  },
+  "tw": {
+    "current_score": 97.8,
+    "analogues": [
+      {
+        "date": "2026-04-22",
+        "score": 97.7,
+        "distance": 0.1,
+        "fwd_5d": null,
+        "fwd_10d": null,
+        "fwd_20d": null,
+        "context": "Score near 52w high, 5d rally of +3.1%, 20d move +12.9%"
+      }
+    ],
+    "summary": {
+      "n_similar": 1,
       "avg_fwd_20d": null,
       "win_rate_20d": null,
       "best_analogue": null,
@@ -42,6 +72,15 @@
   "jp": {
     "current_score": 93.9,
     "analogues": [
+      {
+        "date": "2026-04-22",
+        "score": 93.7,
+        "distance": 0.2,
+        "fwd_5d": null,
+        "fwd_10d": null,
+        "fwd_20d": null,
+        "context": "Score near 52w high"
+      },
       {
         "date": "2026-04-21",
         "score": 94.1,
@@ -71,28 +110,7 @@
       }
     ],
     "summary": {
-      "n_similar": 3,
-      "avg_fwd_20d": null,
-      "win_rate_20d": null,
-      "best_analogue": null,
-      "worst_analogue": null
-    }
-  },
-  "kr": {
-    "current_score": 95.0,
-    "analogues": [
-      {
-        "date": "2026-04-20",
-        "score": 93.2,
-        "distance": 1.8,
-        "fwd_5d": null,
-        "fwd_10d": null,
-        "fwd_20d": null,
-        "context": "Score near 52w high"
-      }
-    ],
-    "summary": {
-      "n_similar": 1,
+      "n_similar": 4,
       "avg_fwd_20d": null,
       "win_rate_20d": null,
       "best_analogue": null,
