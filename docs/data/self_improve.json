@@ -125,6 +125,13 @@
       "EU: Calibration stale: 2026-03-25 (37d ago)"
     ],
     "last_calibration": "2026-03-25",
-    "recommendation": "Signal degradation detected. Consider recalibration."
+    "recommendation": "Signal degradation detected. Consider recalibration.",
+    "last_recalibration": {
+      "date": "2026-05-01",
+      "markets": [
+        "jp"
+      ],
+      "trigger": "auto"
+    }
   }
 }
