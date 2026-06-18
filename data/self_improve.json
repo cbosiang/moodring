@@ -2,32 +2,32 @@
   "date": "2026-06-18",
   "markets": {
     "us": {
-      "full_ic_20d": -0.1549,
-      "recent_ic_20d": 0.379,
+      "full_ic_20d": -0.1551,
+      "recent_ic_20d": 0.3696,
       "ic_trend": "decaying",
-      "ic_change_pct": 144.7,
+      "ic_change_pct": 138.3,
       "score_mean_60d": 78.4,
       "score_std_60d": 16.4,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 4,
         "neutral": 7,
-        "greed": 5,
-        "extreme_greed": 44
+        "greed": 6,
+        "extreme_greed": 43
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.379 vs historical -0.1549",
+        "IC decaying: recent 0.3696 vs historical -0.1551",
         "Calibration stale: 2026-03-25 (85d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 85
     },
     "tw": {
-      "full_ic_20d": -0.1179,
-      "recent_ic_20d": 0.3065,
+      "full_ic_20d": -0.1188,
+      "recent_ic_20d": 0.2955,
       "ic_trend": "decaying",
-      "ic_change_pct": 160.0,
+      "ic_change_pct": 148.7,
       "score_mean_60d": 87.5,
       "score_std_60d": 10.7,
       "zone_distribution_60d": {
@@ -39,7 +39,7 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.3065 vs historical -0.1179",
+        "IC decaying: recent 0.2955 vs historical -0.1188",
         "Score stuck in extreme_greed zone 82% of last 60d",
         "Calibration stale: 2026-03-25 (85d ago)"
       ],
@@ -47,10 +47,10 @@
       "calibration_days_ago": 85
     },
     "jp": {
-      "full_ic_20d": -0.0681,
-      "recent_ic_20d": -0.0095,
+      "full_ic_20d": -0.0675,
+      "recent_ic_20d": 0.0064,
       "ic_trend": "decaying",
-      "ic_change_pct": -86.0,
+      "ic_change_pct": -90.5,
       "score_mean_60d": 78.7,
       "score_std_60d": 13.9,
       "zone_distribution_60d": {
@@ -62,18 +62,18 @@
       },
       "health": "poor",
       "flags": [
-        "IC decaying: recent -0.0095 vs historical -0.0681",
-        "Weak IC: -0.0095",
+        "IC decaying: recent 0.0064 vs historical -0.0675",
+        "Weak IC: 0.0064",
         "Calibration stale: 2026-05-01 (48d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 48
     },
     "kr": {
-      "full_ic_20d": -0.1088,
-      "recent_ic_20d": -0.3538,
+      "full_ic_20d": -0.1084,
+      "recent_ic_20d": -0.3435,
       "ic_trend": "improving",
-      "ic_change_pct": 225.2,
+      "ic_change_pct": 216.9,
       "score_mean_60d": 77.5,
       "score_std_60d": 22.3,
       "zone_distribution_60d": {
@@ -91,12 +91,12 @@
       "calibration_days_ago": 85
     },
     "eu": {
-      "full_ic_20d": -0.0578,
-      "recent_ic_20d": -0.218,
+      "full_ic_20d": -0.0574,
+      "recent_ic_20d": -0.2046,
       "ic_trend": "improving",
-      "ic_change_pct": 277.2,
-      "score_mean_60d": 68.9,
-      "score_std_60d": 11.5,
+      "ic_change_pct": 256.4,
+      "score_mean_60d": 68.8,
+      "score_std_60d": 11.4,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 3,
@@ -115,11 +115,11 @@
   "system_health": {
     "overall": "poor",
     "active_flags": [
-      "US: IC decaying: recent 0.379 vs historical -0.1549",
-      "TW: IC decaying: recent 0.3065 vs historical -0.1179",
+      "US: IC decaying: recent 0.3696 vs historical -0.1551",
+      "TW: IC decaying: recent 0.2955 vs historical -0.1188",
       "TW: Score stuck in extreme_greed zone 82% of last 60d",
-      "JP: IC decaying: recent -0.0095 vs historical -0.0681",
-      "JP: Weak IC: -0.0095",
+      "JP: IC decaying: recent 0.0064 vs historical -0.0675",
+      "JP: Weak IC: 0.0064",
       "US: Calibration stale: 2026-03-25 (85d ago)",
       "TW: Calibration stale: 2026-03-25 (85d ago)",
       "JP: Calibration stale: 2026-05-01 (48d ago)",
