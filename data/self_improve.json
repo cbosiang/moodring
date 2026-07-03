@@ -47,10 +47,10 @@
       "calibration_days_ago": 100
     },
     "jp": {
-      "full_ic_20d": -0.0681,
-      "recent_ic_20d": -0.0225,
+      "full_ic_20d": -0.0675,
+      "recent_ic_20d": -0.0058,
       "ic_trend": "decaying",
-      "ic_change_pct": -67.0,
+      "ic_change_pct": -91.4,
       "score_mean_60d": 82.7,
       "score_std_60d": 8.3,
       "zone_distribution_60d": {
@@ -62,18 +62,18 @@
       },
       "health": "poor",
       "flags": [
-        "IC decaying: recent -0.0225 vs historical -0.0681",
-        "Weak IC: -0.0225",
+        "IC decaying: recent -0.0058 vs historical -0.0675",
+        "Weak IC: -0.0058",
         "Score stuck in extreme_greed zone 88% of last 60d"
       ],
       "calibration_stale": false,
       "calibration_days_ago": 2
     },
     "kr": {
-      "full_ic_20d": -0.1088,
-      "recent_ic_20d": -0.3468,
+      "full_ic_20d": -0.1084,
+      "recent_ic_20d": -0.3358,
       "ic_trend": "improving",
-      "ic_change_pct": 218.8,
+      "ic_change_pct": 209.8,
       "score_mean_60d": 82.8,
       "score_std_60d": 14.2,
       "zone_distribution_60d": {
@@ -91,12 +91,12 @@
       "calibration_days_ago": 100
     },
     "eu": {
-      "full_ic_20d": -0.0537,
-      "recent_ic_20d": -0.1235,
+      "full_ic_20d": -0.0532,
+      "recent_ic_20d": -0.1109,
       "ic_trend": "improving",
-      "ic_change_pct": 130.0,
+      "ic_change_pct": 108.5,
       "score_mean_60d": 73.9,
-      "score_std_60d": 5.7,
+      "score_std_60d": 5.8,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
@@ -118,8 +118,8 @@
       "US: IC decaying: recent 0.2963 vs historical -0.1568",
       "TW: IC decaying: recent 0.3277 vs historical -0.1179",
       "TW: Score stuck in extreme_greed zone 98% of last 60d",
-      "JP: IC decaying: recent -0.0225 vs historical -0.0681",
-      "JP: Weak IC: -0.0225",
+      "JP: IC decaying: recent -0.0058 vs historical -0.0675",
+      "JP: Weak IC: -0.0058",
       "JP: Score stuck in extreme_greed zone 88% of last 60d",
       "US: Calibration stale: 2026-03-25 (100d ago)",
       "TW: Calibration stale: 2026-03-25 (100d ago)",
