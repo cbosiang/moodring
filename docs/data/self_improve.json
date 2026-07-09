@@ -2,32 +2,32 @@
   "date": "2026-07-09",
   "markets": {
     "us": {
-      "full_ic_20d": -0.1577,
-      "recent_ic_20d": 0.2669,
+      "full_ic_20d": -0.158,
+      "recent_ic_20d": 0.2604,
       "ic_trend": "decaying",
-      "ic_change_pct": 69.2,
-      "score_mean_60d": 82.5,
-      "score_std_60d": 8.8,
+      "ic_change_pct": 64.8,
+      "score_mean_60d": 82.7,
+      "score_std_60d": 8.7,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
         "neutral": 0,
-        "greed": 16,
-        "extreme_greed": 44
+        "greed": 15,
+        "extreme_greed": 45
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.2669 vs historical -0.1577",
+        "IC decaying: recent 0.2604 vs historical -0.158",
         "Calibration stale: 2026-03-25 (106d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 106
     },
     "tw": {
-      "full_ic_20d": -0.1162,
-      "recent_ic_20d": 0.3579,
+      "full_ic_20d": -0.1171,
+      "recent_ic_20d": 0.3471,
       "ic_trend": "decaying",
-      "ic_change_pct": 208.0,
+      "ic_change_pct": 196.4,
       "score_mean_60d": 90.4,
       "score_std_60d": 5.6,
       "zone_distribution_60d": {
@@ -39,7 +39,7 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.3579 vs historical -0.1162",
+        "IC decaying: recent 0.3471 vs historical -0.1171",
         "Score stuck in extreme_greed zone 98% of last 60d",
         "Calibration stale: 2026-03-25 (106d ago)"
       ],
@@ -47,10 +47,10 @@
       "calibration_days_ago": 106
     },
     "jp": {
-      "full_ic_20d": -0.0681,
-      "recent_ic_20d": -0.0082,
+      "full_ic_20d": -0.0675,
+      "recent_ic_20d": 0.0092,
       "ic_trend": "decaying",
-      "ic_change_pct": -88.0,
+      "ic_change_pct": -86.4,
       "score_mean_60d": 81.1,
       "score_std_60d": 9.8,
       "zone_distribution_60d": {
@@ -62,18 +62,18 @@
       },
       "health": "poor",
       "flags": [
-        "IC decaying: recent -0.0082 vs historical -0.0681",
-        "Weak IC: -0.0082",
+        "IC decaying: recent 0.0092 vs historical -0.0675",
+        "Weak IC: 0.0092",
         "Score stuck in extreme_greed zone 82% of last 60d"
       ],
       "calibration_stale": false,
       "calibration_days_ago": 8
     },
     "kr": {
-      "full_ic_20d": -0.1088,
-      "recent_ic_20d": -0.346,
+      "full_ic_20d": -0.1084,
+      "recent_ic_20d": -0.3347,
       "ic_trend": "improving",
-      "ic_change_pct": 218.0,
+      "ic_change_pct": 208.8,
       "score_mean_60d": 80.3,
       "score_std_60d": 19.6,
       "zone_distribution_60d": {
@@ -91,10 +91,10 @@
       "calibration_days_ago": 106
     },
     "eu": {
-      "full_ic_20d": -0.0522,
-      "recent_ic_20d": -0.0915,
+      "full_ic_20d": -0.0519,
+      "recent_ic_20d": -0.0858,
       "ic_trend": "improving",
-      "ic_change_pct": 75.3,
+      "ic_change_pct": 65.3,
       "score_mean_60d": 73.8,
       "score_std_60d": 5.8,
       "zone_distribution_60d": {
@@ -106,7 +106,7 @@
       },
       "health": "poor",
       "flags": [
-        "Weak IC: -0.0915",
+        "Weak IC: -0.0858",
         "Calibration stale: 2026-03-25 (106d ago)"
       ],
       "calibration_stale": true,
@@ -116,13 +116,13 @@
   "system_health": {
     "overall": "poor",
     "active_flags": [
-      "US: IC decaying: recent 0.2669 vs historical -0.1577",
-      "TW: IC decaying: recent 0.3579 vs historical -0.1162",
+      "US: IC decaying: recent 0.2604 vs historical -0.158",
+      "TW: IC decaying: recent 0.3471 vs historical -0.1171",
       "TW: Score stuck in extreme_greed zone 98% of last 60d",
-      "JP: IC decaying: recent -0.0082 vs historical -0.0681",
-      "JP: Weak IC: -0.0082",
+      "JP: IC decaying: recent 0.0092 vs historical -0.0675",
+      "JP: Weak IC: 0.0092",
       "JP: Score stuck in extreme_greed zone 82% of last 60d",
-      "EU: Weak IC: -0.0915",
+      "EU: Weak IC: -0.0858",
       "US: Calibration stale: 2026-03-25 (106d ago)",
       "TW: Calibration stale: 2026-03-25 (106d ago)",
       "KR: Calibration stale: 2026-03-25 (106d ago)",
