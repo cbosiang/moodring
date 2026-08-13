@@ -2,12 +2,12 @@
   "date": "2026-08-13",
   "markets": {
     "us": {
-      "full_ic_20d": -0.1584,
-      "recent_ic_20d": 0.2074,
+      "full_ic_20d": -0.1581,
+      "recent_ic_20d": 0.2121,
       "ic_trend": "decaying",
-      "ic_change_pct": 30.9,
+      "ic_change_pct": 34.2,
       "score_mean_60d": 77.6,
-      "score_std_60d": 7.1,
+      "score_std_60d": 7.2,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
@@ -17,7 +17,7 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.2074 vs historical -0.1584",
+        "IC decaying: recent 0.2121 vs historical -0.1581",
         "Calibration stale: 2026-03-25 (141d ago)"
       ],
       "calibration_stale": true,
@@ -50,7 +50,7 @@
       "recent_ic_20d": -0.0394,
       "ic_trend": "decaying",
       "ic_change_pct": -42.4,
-      "score_mean_60d": 57.4,
+      "score_mean_60d": 57.3,
       "score_std_60d": 25.2,
       "zone_distribution_60d": {
         "extreme_fear": 8,
@@ -69,9 +69,9 @@
     },
     "kr": {
       "full_ic_20d": -0.107,
-      "recent_ic_20d": -0.195,
+      "recent_ic_20d": -0.1952,
       "ic_trend": "improving",
-      "ic_change_pct": 82.2,
+      "ic_change_pct": 82.4,
       "score_mean_60d": 47.9,
       "score_std_60d": 32.8,
       "zone_distribution_60d": {
@@ -89,10 +89,10 @@
       "calibration_days_ago": 141
     },
     "eu": {
-      "full_ic_20d": -0.051,
-      "recent_ic_20d": -0.1352,
+      "full_ic_20d": -0.0506,
+      "recent_ic_20d": -0.1291,
       "ic_trend": "improving",
-      "ic_change_pct": 165.1,
+      "ic_change_pct": 155.1,
       "score_mean_60d": 73.5,
       "score_std_60d": 5.7,
       "zone_distribution_60d": {
@@ -113,7 +113,7 @@
   "system_health": {
     "overall": "poor",
     "active_flags": [
-      "US: IC decaying: recent 0.2074 vs historical -0.1584",
+      "US: IC decaying: recent 0.2121 vs historical -0.1581",
       "TW: IC decaying: recent 0.5347 vs historical -0.1045",
       "JP: IC decaying: recent -0.0394 vs historical -0.0684",
       "JP: Weak IC: -0.0394",
