@@ -43,7 +43,9 @@
     "ic_insample": 0.2626,
     "ic_oos": -0.3832,
     "ic_estimated_post": -0.3832,
-    "reason": "Auto-recalibrated: IC 0.0599 → OOS -0.3832 (in-sample 0.2626) | weights rsi=0.20 high=0.60 mom=0.20 | floor=85.0 h_range=25.0 m_range=10.0"
+    "reason": "Auto-recalibrated: IC 0.0599 → OOS -0.3832 (in-sample 0.2626) | weights rsi=0.20 high=0.60 mom=0.20 | floor=85.0 h_range=25.0 m_range=10.0",
+    "last_checked": "2026-09-01",
+    "health_at_check": "poor"
   },
   "kr": {
     "rsi_weight": 0.33,
@@ -71,6 +73,8 @@
     "ic_insample": null,
     "ic_oos": null,
     "ic_estimated_post": null,
-    "reason": "Default equal-weight calibration (EU not yet calibrated)"
+    "reason": "Default equal-weight calibration (EU not yet calibrated)",
+    "last_checked": "2026-09-01",
+    "health_at_check": "poor"
   }
 }
