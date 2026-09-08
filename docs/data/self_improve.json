@@ -2,32 +2,32 @@
   "date": "2026-09-08",
   "markets": {
     "us": {
-      "full_ic_20d": -0.1545,
-      "recent_ic_20d": 0.1915,
+      "full_ic_20d": -0.1547,
+      "recent_ic_20d": 0.1847,
       "ic_trend": "decaying",
-      "ic_change_pct": 23.9,
+      "ic_change_pct": 19.4,
       "score_mean_60d": 76.1,
       "score_std_60d": 6.4,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
         "neutral": 0,
-        "greed": 25,
-        "extreme_greed": 35
+        "greed": 26,
+        "extreme_greed": 34
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.1915 vs historical -0.1545",
+        "IC decaying: recent 0.1847 vs historical -0.1547",
         "Calibration stale: 2026-03-25 (167d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 167
     },
     "tw": {
-      "full_ic_20d": -0.1046,
-      "recent_ic_20d": 0.4621,
+      "full_ic_20d": -0.105,
+      "recent_ic_20d": 0.4619,
       "ic_trend": "decaying",
-      "ic_change_pct": 341.8,
+      "ic_change_pct": 339.9,
       "score_mean_60d": 76.5,
       "score_std_60d": 15.6,
       "zone_distribution_60d": {
@@ -39,17 +39,17 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.4621 vs historical -0.1046",
+        "IC decaying: recent 0.4619 vs historical -0.105",
         "Calibration stale: 2026-03-25 (167d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 167
     },
     "jp": {
-      "full_ic_20d": -0.0693,
-      "recent_ic_20d": -0.0966,
+      "full_ic_20d": -0.0696,
+      "recent_ic_20d": -0.11,
       "ic_trend": "improving",
-      "ic_change_pct": 39.4,
+      "ic_change_pct": 58.0,
       "score_mean_60d": 45.2,
       "score_std_60d": 21.3,
       "zone_distribution_60d": {
@@ -59,19 +59,18 @@
         "greed": 7,
         "extreme_greed": 9
       },
-      "health": "poor",
+      "health": "warning",
       "flags": [
-        "Weak IC: -0.0966",
         "Calibration stale: 2026-08-01 (38d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 38
     },
     "kr": {
-      "full_ic_20d": -0.1099,
-      "recent_ic_20d": -0.2522,
+      "full_ic_20d": -0.1093,
+      "recent_ic_20d": -0.2361,
       "ic_trend": "improving",
-      "ic_change_pct": 129.5,
+      "ic_change_pct": 116.0,
       "score_mean_60d": 35.3,
       "score_std_60d": 23.3,
       "zone_distribution_60d": {
@@ -89,12 +88,12 @@
       "calibration_days_ago": 167
     },
     "eu": {
-      "full_ic_20d": -0.0488,
-      "recent_ic_20d": -0.0894,
+      "full_ic_20d": -0.0491,
+      "recent_ic_20d": -0.0975,
       "ic_trend": "improving",
-      "ic_change_pct": 83.2,
+      "ic_change_pct": 98.6,
       "score_mean_60d": 71.5,
-      "score_std_60d": 7.1,
+      "score_std_60d": 7.0,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
@@ -104,7 +103,7 @@
       },
       "health": "poor",
       "flags": [
-        "Weak IC: -0.0894",
+        "Weak IC: -0.0975",
         "Calibration stale: 2026-03-25 (167d ago)"
       ],
       "calibration_stale": true,
@@ -114,10 +113,9 @@
   "system_health": {
     "overall": "poor",
     "active_flags": [
-      "US: IC decaying: recent 0.1915 vs historical -0.1545",
-      "TW: IC decaying: recent 0.4621 vs historical -0.1046",
-      "JP: Weak IC: -0.0966",
-      "EU: Weak IC: -0.0894",
+      "US: IC decaying: recent 0.1847 vs historical -0.1547",
+      "TW: IC decaying: recent 0.4619 vs historical -0.105",
+      "EU: Weak IC: -0.0975",
       "US: Calibration stale: 2026-03-25 (167d ago)",
       "TW: Calibration stale: 2026-03-25 (167d ago)",
       "JP: Calibration stale: 2026-08-01 (38d ago)",
