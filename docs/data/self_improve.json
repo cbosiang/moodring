@@ -2,12 +2,12 @@
   "date": "2026-10-05",
   "markets": {
     "us": {
-      "full_ic_20d": -0.1583,
-      "recent_ic_20d": 0.1625,
+      "full_ic_20d": -0.1584,
+      "recent_ic_20d": 0.1613,
       "ic_trend": "decaying",
-      "ic_change_pct": 2.7,
-      "score_mean_60d": 76.4,
-      "score_std_60d": 6.2,
+      "ic_change_pct": 1.8,
+      "score_mean_60d": 76.5,
+      "score_std_60d": 6.3,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
@@ -17,17 +17,17 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.1625 vs historical -0.1583",
+        "IC decaying: recent 0.1613 vs historical -0.1584",
         "Calibration stale: 2026-03-25 (194d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 194
     },
     "tw": {
-      "full_ic_20d": -0.1045,
-      "recent_ic_20d": 0.4617,
+      "full_ic_20d": -0.105,
+      "recent_ic_20d": 0.4571,
       "ic_trend": "decaying",
-      "ic_change_pct": 341.8,
+      "ic_change_pct": 335.3,
       "score_mean_60d": 76.6,
       "score_std_60d": 15.6,
       "zone_distribution_60d": {
@@ -39,17 +39,17 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.4617 vs historical -0.1045",
+        "IC decaying: recent 0.4571 vs historical -0.105",
         "Calibration stale: 2026-03-25 (194d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 194
     },
     "jp": {
-      "full_ic_20d": -0.0693,
-      "recent_ic_20d": -0.2873,
+      "full_ic_20d": -0.0696,
+      "recent_ic_20d": -0.3117,
       "ic_trend": "improving",
-      "ic_change_pct": 314.6,
+      "ic_change_pct": 347.8,
       "score_mean_60d": 32.4,
       "score_std_60d": 12.0,
       "zone_distribution_60d": {
@@ -112,8 +112,8 @@
   "system_health": {
     "overall": "good",
     "active_flags": [
-      "US: IC decaying: recent 0.1625 vs historical -0.1583",
-      "TW: IC decaying: recent 0.4617 vs historical -0.1045",
+      "US: IC decaying: recent 0.1613 vs historical -0.1584",
+      "TW: IC decaying: recent 0.4571 vs historical -0.105",
       "US: Calibration stale: 2026-03-25 (194d ago)",
       "TW: Calibration stale: 2026-03-25 (194d ago)",
       "JP: Calibration stale: 2026-08-01 (65d ago)",
