@@ -46,10 +46,10 @@
       "calibration_days_ago": 198
     },
     "jp": {
-      "full_ic_20d": -0.0693,
-      "recent_ic_20d": -0.3315,
+      "full_ic_20d": -0.0696,
+      "recent_ic_20d": -0.3577,
       "ic_trend": "improving",
-      "ic_change_pct": 378.4,
+      "ic_change_pct": 413.9,
       "score_mean_60d": 34.1,
       "score_std_60d": 13.8,
       "zone_distribution_60d": {
