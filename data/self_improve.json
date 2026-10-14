@@ -3,11 +3,11 @@
   "markets": {
     "us": {
       "full_ic_20d": -0.1577,
-      "recent_ic_20d": 0.1898,
+      "recent_ic_20d": 0.1894,
       "ic_trend": "decaying",
-      "ic_change_pct": 20.4,
-      "score_mean_60d": 77.1,
-      "score_std_60d": 6.6,
+      "ic_change_pct": 20.1,
+      "score_mean_60d": 76.9,
+      "score_std_60d": 6.5,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
@@ -17,17 +17,17 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.1898 vs historical -0.1577",
+        "IC decaying: recent 0.1894 vs historical -0.1577",
         "Calibration stale: 2026-03-25 (203d ago)"
       ],
       "calibration_stale": true,
       "calibration_days_ago": 203
     },
     "tw": {
-      "full_ic_20d": -0.1045,
-      "recent_ic_20d": 0.461,
+      "full_ic_20d": -0.105,
+      "recent_ic_20d": 0.4573,
       "ic_trend": "decaying",
-      "ic_change_pct": 341.1,
+      "ic_change_pct": 335.5,
       "score_mean_60d": 79.2,
       "score_std_60d": 14.9,
       "zone_distribution_60d": {
@@ -39,7 +39,7 @@
       },
       "health": "good",
       "flags": [
-        "IC decaying: recent 0.461 vs historical -0.1045",
+        "IC decaying: recent 0.4573 vs historical -0.105",
         "Score stuck in extreme_greed zone 80% of last 60d",
         "Calibration stale: 2026-03-25 (203d ago)"
       ],
@@ -47,10 +47,10 @@
       "calibration_days_ago": 203
     },
     "jp": {
-      "full_ic_20d": -0.0693,
-      "recent_ic_20d": -0.3489,
+      "full_ic_20d": -0.0696,
+      "recent_ic_20d": -0.3746,
       "ic_trend": "improving",
-      "ic_change_pct": 403.5,
+      "ic_change_pct": 438.2,
       "score_mean_60d": 35.3,
       "score_std_60d": 14.3,
       "zone_distribution_60d": {
@@ -68,10 +68,10 @@
       "calibration_days_ago": 74
     },
     "kr": {
-      "full_ic_20d": -0.1099,
-      "recent_ic_20d": -0.2542,
+      "full_ic_20d": -0.1093,
+      "recent_ic_20d": -0.2472,
       "ic_trend": "improving",
-      "ic_change_pct": 131.3,
+      "ic_change_pct": 126.2,
       "score_mean_60d": 31.0,
       "score_std_60d": 12.8,
       "zone_distribution_60d": {
@@ -89,17 +89,17 @@
       "calibration_days_ago": 203
     },
     "eu": {
-      "full_ic_20d": -0.055,
-      "recent_ic_20d": -0.1708,
+      "full_ic_20d": -0.0551,
+      "recent_ic_20d": -0.1695,
       "ic_trend": "improving",
-      "ic_change_pct": 210.5,
-      "score_mean_60d": 66.1,
+      "ic_change_pct": 207.6,
+      "score_mean_60d": 66.2,
       "score_std_60d": 7.9,
       "zone_distribution_60d": {
         "extreme_fear": 0,
         "fear": 0,
-        "neutral": 17,
-        "greed": 32,
+        "neutral": 16,
+        "greed": 33,
         "extreme_greed": 11
       },
       "health": "good",
@@ -113,8 +113,8 @@
   "system_health": {
     "overall": "good",
     "active_flags": [
-      "US: IC decaying: recent 0.1898 vs historical -0.1577",
-      "TW: IC decaying: recent 0.461 vs historical -0.1045",
+      "US: IC decaying: recent 0.1894 vs historical -0.1577",
+      "TW: IC decaying: recent 0.4573 vs historical -0.105",
       "TW: Score stuck in extreme_greed zone 80% of last 60d",
       "US: Calibration stale: 2026-03-25 (203d ago)",
       "TW: Calibration stale: 2026-03-25 (203d ago)",
