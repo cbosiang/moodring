@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-20",
+  "data_sources": {
+    "market_prices": "Yahoo Finance (yfinance)",
+    "tw_margin": "FinMind API (TWSE OpenData)",
+    "tw_institutional": "FinMind API (三大法人)",
+    "scoring_method": "Rolling 252-day Z-score normalization",
+    "behavioral_params": "Kahneman & Tversky (1979), Banerjee (1992)"
+  },
+  "us_market": {
+    "SPY_close": 766.48,
+    "SPY_RSI14": 52.2,
+    "SPY_SMA20": 770.83,
+    "SPY_SMA60": 764.75,
+    "SPY_vs_52w_high_pct": 98.4,
+    "SPY_5d_return_pct": -1.49,
+    "SPY_20d_return_pct": -0.91,
+    "VIX": 18.44,
+    "US_10Y_yield": 5.14
+  },
+  "tw_market": {
+    "TAIEX_close": 46293.0,
+    "TAIEX_RSI14": 39.8,
+    "TAIEX_SMA20": 48170.0,
+    "TAIEX_vs_52w_high_pct": 92.9,
+    "TAIEX_5d_return_pct": -4.24,
+    "TAIEX_20d_return_pct": 0.01,
+    "TSMC_close": 2405.0,
+    "TSMC_vs_52w_high_pct": 93.0
+  },
+  "tw_retail_indicators": {
+    "margin_balance": 9592714,
+    "margin_5d_change_pct": 1.72,
+    "margin_5d_trend": "INCREASING",
+    "institutional_net_TWD": -888.6,
+    "retail_net_est_TWD": 888.6,
+    "foreign_net_TWD": -767.4,
+    "foreign_consecutive_days": 9,
+    "foreign_consecutive_direction": "sell",
+    "TSMC_margin_balance": 34111,
+    "TSMC_margin_30d_change_pct": 23.96
+  },
+  "jp_market": {
+    "NIKKEI_close": 63874.33,
+    "NIKKEI_RSI14": 44.7,
+    "NIKKEI_SMA20": 66960.74,
+    "NIKKEI_vs_52w_high_pct": 88.3,
+    "NIKKEI_5d_return_pct": -5.76,
+    "NIKKEI_20d_return_pct": -0.08,
+    "jp_moodring_score": 26.7
+  },
+  "kr_market": {
+    "KOSPI_close": 5531.94,
+    "KOSPI_RSI14": 17.9,
+    "KOSPI_SMA20": 6530.59,
+    "KOSPI_vs_52w_high_pct": 60.7,
+    "KOSPI_5d_return_pct": -8.34,
+    "KOSPI_20d_return_pct": -17.65,
+    "kr_moodring_score": 5.9
+  },
+  "eu_market": {
+    "STOXX50_close": 6144.81,
+    "STOXX50_RSI14": 36.2,
+    "STOXX50_SMA20": 6228.75,
+    "STOXX50_vs_52w_high_pct": 93.8,
+    "STOXX50_5d_return_pct": -0.91,
+    "STOXX50_20d_return_pct": -2.74,
+    "eu_moodring_score": 56.7
+  },
+  "global_context": {
+    "Gold": 4140.0,
+    "USDJPY": 158.09,
+    "USDTWD": 32.59
+  }
+}
