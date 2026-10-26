@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-23",
+  "date": "2026-10-26",
   "data_sources": {
     "market_prices": "Yahoo Finance (yfinance)",
     "tw_margin": "FinMind API (TWSE OpenData)",
@@ -8,14 +8,14 @@
     "behavioral_params": "Kahneman & Tversky (1979), Banerjee (1992)"
   },
   "us_market": {
-    "SPY_close": 760.87,
-    "SPY_RSI14": 37.5,
-    "SPY_SMA20": 770.2,
-    "SPY_SMA60": 766.81,
-    "SPY_vs_52w_high_pct": 97.7,
-    "SPY_5d_return_pct": -0.31,
-    "SPY_20d_return_pct": -1.36,
-    "VIX": 20.06,
+    "SPY_close": 759.97,
+    "SPY_RSI14": 36.9,
+    "SPY_SMA20": 770.15,
+    "SPY_SMA60": 766.79,
+    "SPY_vs_52w_high_pct": 97.5,
+    "SPY_5d_return_pct": -0.43,
+    "SPY_20d_return_pct": -1.48,
+    "VIX": 19.45,
     "US_10Y_yield": 4.99
   },
   "tw_market": {
@@ -38,25 +38,25 @@
     "foreign_consecutive_days": 1,
     "foreign_consecutive_direction": "sell",
     "TSMC_margin_balance": 35472,
-    "TSMC_margin_30d_change_pct": 28.63
+    "TSMC_margin_30d_change_pct": 22.74
   },
   "jp_market": {
-    "NIKKEI_close": 62907.84,
-    "NIKKEI_RSI14": 27.9,
-    "NIKKEI_SMA20": 66889.49,
-    "NIKKEI_vs_52w_high_pct": 86.9,
-    "NIKKEI_5d_return_pct": -2.36,
-    "NIKKEI_20d_return_pct": -3.25,
-    "jp_moodring_score": 10.4
+    "NIKKEI_close": 62189.65,
+    "NIKKEI_RSI14": 18.0,
+    "NIKKEI_SMA20": 66539.72,
+    "NIKKEI_vs_52w_high_pct": 85.9,
+    "NIKKEI_5d_return_pct": -4.2,
+    "NIKKEI_20d_return_pct": -6.29,
+    "jp_moodring_score": 5.8
   },
   "kr_market": {
-    "KOSPI_close": null,
-    "KOSPI_RSI14": 18.7,
-    "KOSPI_SMA20": null,
-    "KOSPI_vs_52w_high_pct": null,
-    "KOSPI_5d_return_pct": null,
-    "KOSPI_20d_return_pct": null,
-    "kr_moodring_score": 6.1
+    "KOSPI_close": 5472.92,
+    "KOSPI_RSI14": 17.5,
+    "KOSPI_SMA20": 6264.49,
+    "KOSPI_vs_52w_high_pct": 60.0,
+    "KOSPI_5d_return_pct": -5.12,
+    "KOSPI_20d_return_pct": -22.01,
+    "kr_moodring_score": 5.8
   },
   "eu_market": {
     "STOXX50_close": 6068.22,
@@ -68,8 +68,8 @@
     "eu_moodring_score": 53.2
   },
   "global_context": {
-    "Gold": 4011.0,
-    "USDJPY": 156.89,
-    "USDTWD": 32.58
+    "Gold": 4018.0,
+    "USDJPY": 156.94,
+    "USDTWD": 32.56
   }
 }
